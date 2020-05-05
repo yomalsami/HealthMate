@@ -1,7 +1,7 @@
 import'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:cliniccare/FAB2.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:line_awesome_icons/line_awesome_icons.dart';
 
 class vitalHomePage extends StatefulWidget {
   @override
@@ -19,6 +19,7 @@ class _vitalHomePageState extends State<vitalHomePage> {
       body: SingleChildScrollView(
         child:new Column(
           children: <Widget>[
+            new Padding(padding: EdgeInsets.only(top: 30.0)),
             new HomePageBody(),
           ],
         )
@@ -40,21 +41,23 @@ class HomePageBody extends StatelessWidget {
 class IconRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      height: 120.0,
-      margin: const EdgeInsets.only(
-        left:24.0 ,
-        right: 24.0,
-        bottom: 16.0,
-        top: 16.0,
-      ),
-      child: new Stack(
-        children: <Widget>[
-          vitalCard,
+    return GestureDetector(
+      onTap: () =>Navigator.pushNamed(context,"/vital"),
+      child: new Container(
+        height: 120.0,
+        margin: const EdgeInsets.only(
+          left:0.0 ,
+          right: 24.0,
+          bottom: 10.0,
+          top: 16.0,
+        ),
+        child: new Stack(
+          children: <Widget>[
+            vitalCard,
+          ],
+        ),
 
-        ],
       ),
-
     );
   }
 }
@@ -62,11 +65,53 @@ class IconRow extends StatelessWidget {
 
 final vitalCard = new Container(
   height: 124.0,
-  margin: new EdgeInsets.only(left: 46.0),
+  width: 400.0,
+  margin: new EdgeInsets.only(left: 20.0),
+  child: new Stack(
+    children: <Widget>[
+      new Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new Container(
+                  child:Icon(
+                    LineAwesomeIcons.heart,
+                    color: Colors.redAccent,
+                    size: 60.0,
+                  )
+              ),
+              new Padding(padding: EdgeInsets.only(left: 30.0)),
+              new Container(
+                child: new Text(
+                  "Vitals",
+                  style: TextStyle(
+                    fontSize: 50.0,
+                    color: Colors.white,
+                    backgroundColor: new Color(0xFF333366),
+                    decorationColor: new Color(0xFF333366),
+                  ),
+                ),
+              ),
+              new Padding(padding: EdgeInsets.only(left: 30.0)),
+              new Container(
+                  child:Icon(
+                    LineAwesomeIcons.arrow_right,
+                    color: Colors.white,
+                    size: 60.0,
+                  )
+              ),
+            ],
+          )
+        ],
+      )
+    ],
+  ),
   decoration: new BoxDecoration(
     color: new Color(0xFF333366),
     shape: BoxShape.rectangle,
-    borderRadius: new BorderRadius.circular(8.0),
+    borderRadius: new BorderRadius.circular(10.0),
     boxShadow: <BoxShadow>[
       new BoxShadow(
         color: Colors.black12,

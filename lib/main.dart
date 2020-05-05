@@ -31,7 +31,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: splashPage(),
+        home: vitalHomePage(),
+        routes: <String,WidgetBuilder>{
+          '/vital':(_) =>new addActPage()
+        },
         theme:new ThemeData(
           scaffoldBackgroundColor: Colors.black,
           backgroundColor: Colors.black,
