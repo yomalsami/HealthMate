@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a3b4ac9f-51c6-4f5c-a2fb-bd259aa1862d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/modules/careplan/addmeasure.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/careplan/addmeasure.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/careplan/homecare.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/careplan/homecare.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
