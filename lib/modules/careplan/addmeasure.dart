@@ -3,6 +3,8 @@ import 'dart:math' as math;
 import 'package:cliniccare/FAB2.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 
+import '../../home.dart';
+
 class vitalHomePage extends StatefulWidget {
   @override
   _vitalHomePageState createState() => _vitalHomePageState();
@@ -87,7 +89,7 @@ class _vitalHomePageState extends State<vitalHomePage> {
                                 labelText: "Systolic Pressure",
                                 hintText: "Enter the systolic pressure here",
                                 border: new OutlineInputBorder(
-                                  borderRadius: new BorderRadius.circular(15.0),
+                                  borderRadius: new BorderRadius.circular(20.0),
                                   borderSide: BorderSide(
                                     color: Colors.blue,
                                   ),
@@ -109,7 +111,7 @@ class _vitalHomePageState extends State<vitalHomePage> {
                                 labelText: "Diastolic Pressure",
                                 hintText: "Enter the systolic pressure here",
                                 border: new OutlineInputBorder(
-                                  borderRadius: new BorderRadius.circular(15.0),
+                                  borderRadius: new BorderRadius.circular(20.0),
                                   borderSide: BorderSide(
                                     color: Colors.blue,
                                   ),
@@ -119,7 +121,6 @@ class _vitalHomePageState extends State<vitalHomePage> {
                             ),
                             keyboardType:TextInputType.number,
                           ),
-                          new Padding(padding: EdgeInsets.only(top:20.0)),
                         ],
                       ),
                     ),
@@ -127,8 +128,7 @@ class _vitalHomePageState extends State<vitalHomePage> {
                 ],
               ),
             ),
-
-
+            Padding(padding: EdgeInsets.only(top:10.0)),            
             Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -199,6 +199,7 @@ class _vitalHomePageState extends State<vitalHomePage> {
                 SliderWidget(),
               ],
             ),
+            Padding(padding: EdgeInsets.only(top:10.0)),            
             Container(
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -210,7 +211,6 @@ class _vitalHomePageState extends State<vitalHomePage> {
                         style:TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
-
                         )
                     ),]
               ),
@@ -222,7 +222,29 @@ class _vitalHomePageState extends State<vitalHomePage> {
                 SliderWidget(),
               ],
             ),
-
+            Padding(padding: EdgeInsets.only(top:30.0)),
+            new MaterialButton(
+                          height: 50.0,
+                          minWidth: 200.0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(15.0),
+                            side: BorderSide(color: Colors.white10),
+                          ),
+                          color:Colors.teal,
+                          textColor: Colors.white,
+                          child: new Text(
+                            "Submit",
+                            style: TextStyle(
+                              fontSize: 20.0
+                            
+                          ),),
+                          onPressed: (){
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => HomePage()));
+                          },
+                          splashColor: Colors.white70,
+                        )
             ],
         )
       ),

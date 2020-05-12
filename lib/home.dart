@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> screens=[
     ReminderPage(),
     Settings(),
-    //careHomePage(),
+    carePlanPage(),
   ];
 
   Widget currentScreen = ReminderPage();
@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                     minWidth:40,
                     onPressed: (){
                       setState(() {
-                        //currentScreen= careHomePage();
+                        currentScreen= carePlanPage();
                         currentTab=1;
                       });
                     },

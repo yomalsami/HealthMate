@@ -12,7 +12,6 @@
     <list default="true" id="a3b4ac9f-51c6-4f5c-a2fb-bd259aa1862d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/modules/careplan/addmeasure.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/careplan/addmeasure.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/login/login_email.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/login/login_email.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -87,7 +86,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587916581354</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="//">
+      <created>1589268905110</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1589268905111</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

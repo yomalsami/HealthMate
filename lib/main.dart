@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: vitalHomePage(),
+        home: HomePage(),
         routes: <String,WidgetBuilder>{
           '/vital':(_) =>new addActPage()
         },
