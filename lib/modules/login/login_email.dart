@@ -133,12 +133,16 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                           color: Colors.black,
                           fontSize: 20.0,
                         )) ),
-                child: new Container(
+                 child: new Container(
                   padding: const EdgeInsets.all(40.0),
                   child: new Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         new TextFormField(
+//                          onFieldSubmitted: (v){
+//                            FocusScope.of(context).requestFocus(_focusNode1);
+//                          },
+//                          textInputAction: TextInputAction.next,
                           //onSaved: (val) => _username = val,
                           focusNode: _focusNode1,
                           onTap: _requestFocus1,
