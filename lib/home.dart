@@ -3,8 +3,7 @@ import 'package:cliniccare/modules/reminder/reminders.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cliniccare/modules/setting/setting.dart';
-
-import 'FAB2.dart';
+import 'package:call_number/call_number.dart';
 import 'modules/careplan/homecare.dart';
 
 
@@ -14,6 +13,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // final TextEditingController _controller = new TextEditingController();
+
+  @override
+  initState() {
+    super.initState();
+  }
+
+  _initCall() async {
+    CallNumber().callNumber("7043291668");
+    // if(_controller.text != null)
+    //   await new CallNumber().callNumber('+91' + _controller.text);
+  }
 
   int currentTab = 0;
   final List<Widget> screens=[
@@ -45,7 +56,7 @@ class _HomePageState extends State<HomePage> {
         color: Colors.white,
 
       ),
-      onPressed: (){},
+      onPressed: _initCall,
     ),
 //      BOTTOM NAVIGATION BAR
       bottomNavigationBar: BottomAppBar(

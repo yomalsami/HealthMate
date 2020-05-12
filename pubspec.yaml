@@ -32,6 +32,8 @@ dependencies:
   intl:
   flutter_datetime_picker:
   datetime_picker_formfield: ^1.0.0
+  call_number:
+  settings_ui:
 
 
 
