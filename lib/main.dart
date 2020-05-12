@@ -20,10 +20,6 @@ void main() {
 
 
 }
-//final routes ={
-//  '/login': (BuildContext context)=>new LoginPage(),
-//  '/home':(BuildContext context)=> new HomePage(),
-//};
 
 class MyApp extends StatelessWidget {
 
@@ -33,7 +29,10 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: HomePage(),
         routes: <String,WidgetBuilder>{
-          '/vital':(_) =>new addActPage()
+          '/vital':(_) =>new vitalHomePage(),
+          '/addmed': (_) =>new addMedPage(),
+          '/addact': (_) =>new addMedPage(),
+          '/home': (_) =>new HomePage(),
         },
         theme:new ThemeData(
           scaffoldBackgroundColor: Colors.black,

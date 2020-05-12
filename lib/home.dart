@@ -37,17 +37,16 @@ class _HomePageState extends State<HomePage> {
       ),
 //      Floating Action button
       floatingActionButtonLocation:FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FAB(),
-//      FloatingActionButton(
-//
-//        backgroundColor: Colors.teal,
-//        child: const Icon(
-//          Icons.add,
-//          color: Colors.white,
-//
-//        ),
-//        onPressed: (){},
-//      )
+      floatingActionButton:FloatingActionButton(
+
+      backgroundColor: Colors.red,
+      child: const Icon(
+        Icons.call,
+        color: Colors.white,
+
+      ),
+      onPressed: (){},
+    ),
 //      BOTTOM NAVIGATION BAR
       bottomNavigationBar: BottomAppBar(
         shape:CircularNotchedRectangle(),
