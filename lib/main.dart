@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: emergencyPage(),
+        home: editProfile(),
         routes: <String,WidgetBuilder>{
           '/vital':(_) =>new vitalHomePage(),
           '/addmed': (_) =>new addMedPage(),
