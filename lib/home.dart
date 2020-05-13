@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cliniccare/modules/setting/setting.dart';
 import 'package:call_number/call_number.dart';
+import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'modules/careplan/homecare.dart';
 
 
@@ -20,11 +21,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-  _initCall() async {
-    CallNumber().callNumber("7043291668");
-    // if(_controller.text != null)
-    //   await new CallNumber().callNumber('+91' + _controller.text);
-  }
+
 
   int currentTab = 0;
   final List<Widget> screens=[
@@ -50,13 +47,16 @@ class _HomePageState extends State<HomePage> {
       floatingActionButtonLocation:FloatingActionButtonLocation.centerDocked,
       floatingActionButton:FloatingActionButton(
 
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.white,
       child: const Icon(
         Icons.call,
-        color: Colors.white,
+        color: Colors.red,
+        size: 40.0,
 
       ),
-      onPressed: _initCall,
+      onPressed: (){
+        Navigator.of(context).pushNamed('/emergency');
+      },
     ),
 //      BOTTOM NAVIGATION BAR
       bottomNavigationBar: BottomAppBar(

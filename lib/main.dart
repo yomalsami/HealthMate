@@ -1,6 +1,7 @@
 
 import 'package:cliniccare/home.dart';
 import 'package:cliniccare/modules/careplan/addmeasure.dart';
+import 'package:cliniccare/modules/careplan/emergency.dart';
 import 'package:cliniccare/modules/careplan/homecare.dart';
 import 'package:cliniccare/modules/reminder/reminders.dart';
 import 'package:cliniccare/modules/setting/setting.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'modules/careplan/addact.dart';
 import 'modules/careplan/addmed.dart';
 import 'modules/careplan/addmed.dart';
+import 'modules/careplan/editProfile.dart';
 import 'modules/login/login_email.dart';
 
 import 'modules/signup/signup.dart';
@@ -28,12 +30,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Settings(),
+        home: emergencyPage(),
         routes: <String,WidgetBuilder>{
           '/vital':(_) =>new vitalHomePage(),
           '/addmed': (_) =>new addMedPage(),
           '/addact': (_) =>new addMedPage(),
           '/home': (_) =>new HomePage(),
+          '/emergency':(_)=> new emergencyPage(),
+          '/editProfile':(_)=> new editProfile(),
         },
         theme:new ThemeData(
           scaffoldBackgroundColor: Colors.black,
