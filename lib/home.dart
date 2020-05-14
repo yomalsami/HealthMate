@@ -115,7 +115,7 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Icon(
-                          Icons.alarm,
+                          LineAwesomeIcons.clock_o,
                           color:currentTab == 0 ? Colors.teal : Colors.black,
                         ),
                         Text(

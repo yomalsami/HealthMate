@@ -28,9 +28,7 @@ class _FAB2State extends State<FAB2> with TickerProviderStateMixin {
                   color: Colors.white,
                   onPressed: (){
                     setState(() {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomePage()));
+                      Navigator.of(context).pushNamed('/careplan');
                     });
                   },
                   child: Icon(Icons.close,color: Colors.redAccent),

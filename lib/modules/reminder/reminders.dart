@@ -1,6 +1,7 @@
 import 'package:cliniccare/modules/setting/setting.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class ReminderPage extends StatefulWidget {
@@ -25,8 +26,15 @@ class _ReminderPageState extends State<ReminderPage> {
         leading: Padding(
             padding: EdgeInsets.only(left:10),
             child: IconButton(
-              icon: Icon(Icons.menu),
-              onPressed: (){},
+              icon: Icon(Icons.settings, color: Colors.white,size: 30.0,),
+              onPressed: (){
+                setState(() {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Settings()));
+
+              });
+              },
 
             )),
         title:Row(
@@ -38,15 +46,7 @@ class _ReminderPageState extends State<ReminderPage> {
 
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.settings, color: Colors.white,size: 30.0,),
-            onPressed: (){
-              setState(() {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Settings()));
-
-              });
-            },
+            icon: Icon(LineAwesomeIcons.clock_o, color: Colors.white,size: 30.0,),
           ),
         ],
       ),

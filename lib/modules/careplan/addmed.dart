@@ -9,26 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
-//const List<String> Units= const <String>[
-//  'mg',
-//  "g",
-//  "mcg",
-//  "iu",
-//  "ml",
-//  "pill(s)",
-//  "tbsp",
-//  "Units(s)",
-//  "cups",
-//  "tsp",
-//  "L",
-//  "lozenge(s)",
-//  "syrup",
-//  "drop(s)",
-//  "spray(s)",
-//  "injection",
-//  "ointment",
-//  "inhalation",
-//];
 
 
 class addMedPage extends StatefulWidget {
@@ -40,74 +20,52 @@ addMedPage():super();
   _addMedPageState createState() => _addMedPageState();
 }
 
-//class Units{
-//  int id;
-//  String name;
-//
-//
-//  Units(this.id,this.name);
-//
-//  static List<Units> getUnits(){
-//    return <Units>[
-//      Units(1, 'mg'),
-//      Units(2, "g"),
-//      Units(3, "mcg"),
-//      Units(4, "iu"),
-//      Units(5, "ml"),
-//      Units(6, "pill(s)"),
-//       Units(7, "tbsp"),
-//       Units(8, "Units(s)"),
-//       Units(9, "cups"),
-//       Units(10, "tsp"),
-//       Units(11, "L"),
-//       Units(12,"lozenge(s)"),
-//       Units(13, "syrup"),
-//       Units(14, "drop(s)"),
-//       Units(15,"spray(s)"),
-//       Units(16, "injection"),
-//       Units(17, "ointment"),
-//       Units(18,"inhalation"),
-//    ];
-//  }
-//}
-
-
-
 class _addMedPageState extends State<addMedPage>{
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _autoValidate1=false;
+  String _name;
+  var _quant;
+  FocusNode _focusNode1;
+  FocusNode _focusNode2;  
 
   String _date = "Choose your date";
   String _date1 = "Choose your date";
   String _time = "Choose your time";
   List<bool> isSelected = [false, false, false, false, false, false, false];
-//  List<Units> _units =Units.getUnits();
-//  List<DropdownMenuItem<Units>> _dropdownMenuItems;
-//  Units _selectedUnits;
 
 
   void initState(){
-//    _dropdownMenuItems= buildDropdownMenuItems(_units);
-//    _selectedUnits = _dropdownMenuItems[0].value;
     super.initState();
+    _focusNode1 =FocusNode();
+    _focusNode2 =FocusNode();    
   }
 
-//  List<DropdownMenuItem<Units>> buildDropdownMenuItems(List units) {
-//    List<DropdownMenuItem<Units>> items = List();
-//    for (Units unit in units){
-//      items.add(
-//          DropdownMenuItem(
-//            value: unit,
-//            child: Text(unit.name),
-//          ),
-//      );
-//    }
-//    return items;
-//  }
+    @override
+  void _requestFocus1(){
+    setState(() {
+      FocusScope.of(context).requestFocus(_focusNode1);
+    });
+  }
 
-//  onChangeDropdownItem(Units selectedUnits) {
-//    setState(() {
-//      _selectedUnits = selectedUnits;
-//    });
-//  }
+  @override
+  void _requestFocus2(){
+    setState(() {
+      FocusScope.of(context).requestFocus(_focusNode2);
+    });
+  }
+  
+  @override
+  void dispose1(){
+    _focusNode1.dispose();
+    super.dispose();
+  }
+  @override
+    void dispose2(){
+    _focusNode2.dispose();
+    super.dispose();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     int _selectedIndex = 0;
@@ -118,8 +76,6 @@ class _addMedPageState extends State<addMedPage>{
       appBar: MyAppbar(),
         body:SingleChildScrollView(
           reverse: false,
-
-          //padding:const EdgeInsets.all(8.),
           child: new Stack(
             children: <Widget>[
               new Column(
@@ -127,7 +83,8 @@ class _addMedPageState extends State<addMedPage>{
                   children: <Widget>[
                     Padding(padding: EdgeInsets.only(top: 60.0)),
                     new Form(
-                      //key: formKey,
+                      key: _formKey,
+                      autovalidate: _autoValidate1,
                       child: new Theme(
                         data:new ThemeData(
                             brightness: Brightness.dark,primarySwatch: Colors.teal,
@@ -141,10 +98,28 @@ class _addMedPageState extends State<addMedPage>{
                           child: new Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
+                              Align(
+                                alignment: Alignment.center,
+                                  child: new Container(
+                                  height: 100.0,
+                                  width: 400.0,
+                                  child: new Text(
+                                    " Add Reminder For Medicine",
+                                    style: TextStyle(
+                                      fontSize:30.0,
+                                      fontWeight: FontWeight.w200,
+                                      color:Colors.white
+                                    ),
+                                  )),
+                              ),
                               new TextFormField(
+                                //validator: validateName,
+                                onSaved: (String value){
+                                  _name=value;
+                                },
+
                                 decoration: new InputDecoration(
-                                    //labelText: "Email Address",
-                                    hintText: "Your Medicine Name",
+                                    hintText: "Medicine Name",
                                     border: new OutlineInputBorder(
                                       borderRadius: new BorderRadius.circular(15.0),
                                       borderSide: BorderSide(
@@ -161,202 +136,29 @@ class _addMedPageState extends State<addMedPage>{
                                 ),
                                 keyboardType:TextInputType.text,
                               ),
-                              new Padding(padding: EdgeInsets.only(top:10.0)),
-                              new Stack(
-                                children:[
-                                Align(
-                                  alignment: Alignment(-.99, 0),
-                                  child: Container(
-                                    width: 230.0,
-                                    child: new TextFormField(
-                                      decoration: new InputDecoration(
-                                        hintText: "Dose Quantity",
-                                        border: new OutlineInputBorder(
-                                          borderRadius: new BorderRadius.circular(15.0),
-                                          borderSide: BorderSide(
-                                            color: Colors.blue,
-                                          ),
-                                        ),
-                                        enabledBorder: new OutlineInputBorder(
-                                          borderRadius: new BorderRadius.circular(15.0),
-                                          borderSide: BorderSide(
-                                            color: Colors.white,
-                                          ),
-                                        ),
+                              new Padding(padding: EdgeInsets.only(top:20.0)),
+                              Container(
+                                width: 400.0,
+                                child: new TextFormField(
+                                  decoration: new InputDecoration(
+                                    hintText: "Dose Quantity",
+                                    border: new OutlineInputBorder(
+                                      borderRadius: new BorderRadius.circular(15.0),
+                                      borderSide: BorderSide(
+                                        color: Colors.blue,
                                       ),
-                                      keyboardType:TextInputType.number,
+                                    ),
+                                    enabledBorder: new OutlineInputBorder(
+                                      borderRadius: new BorderRadius.circular(15.0),
+                                      borderSide: BorderSide(
+                                        color: Colors.white,
+                                      ),
                                     ),
                                   ),
+                                  keyboardType:TextInputType.number,
                                 ),
-                                  //Padding(padding: EdgeInsets.only(left: 20.0)),
-//                                Align(
-//                                  alignment: Alignment(.99,0),
-//                                  child: Row(
-//                                    mainAxisAlignment: MainAxisAlignment.end,
-//                                    children: <Widget>[
-//                                      RawMaterialButton(
-//                                        fillColor: Colors.teal,
-//                                        constraints: const BoxConstraints(minWidth: 100.0,minHeight: 60.0),
-//                                        shape:RoundedRectangleBorder(
-//                                          borderRadius: BorderRadius.circular(10.0),
-//                                        ),
-//                                        onPressed:(){
-//                                          showModalBottomSheet(
-//                                              context: context,
-//                                              builder: (BuildContext context){
-//                                                return Container(
-//                                                  height: 200.0,
-//                                                  child: CupertinoPicker(
-//                                                    itemExtent: 30,
-//                                                    onSelectedItemChanged: (int index){
-//                                                      setState(() {
-//                                                        _selectedIndex=index;
-//                                                      });
-//                                                      //Navigator.pop(context);
-//                                                    },
-//                                                    children: new List<Widget>.generate(Units.length, (int index) {
-//                                                      return new Container(
-//                                                        child: new Text(Units[index]),
-//                                                      );
-//                                                    }),
-//                                                  ),
-//                                                );
-//                                              });
-//                                      },
-//                                        child: Text('Units'),
-//                                  ),
-////                                      Text(
-////                                        '$Units[_selectedIndex]',
-////                                        style: TextStyle(fontSize: 18.0),
-////                                      ),
-////                                      SizedBox(
-////                                        height: 20.0,
-////                                      ),
-//                                    ],
-//                                  ),
-//
-//                                ),
-                                Align(
-                                  alignment: Alignment(.95,.5),
-                                  child:RaisedButton(
-                                    child: Text("Units"),
-                                    onPressed: (){
-                                      final action =  CupertinoActionSheet(
-                                          title: Text(
-                                            "Dose Units",
-                                            style: TextStyle(fontSize: 20.0),
-                                          ),
-                                          message: Text(
-                                            "Select any unit",
-                                            style: TextStyle(fontSize: 15.0),
-                                          ),
-//                                          onSelectedItemChanged: (int index){
-//                                            print(index);
-//                                          },
-                                          actions: <Widget>[
-                                            CupertinoActionSheetAction(
-                                                child: Text('mg'),
-                                            onPressed: (){
-                                              Navigator.pop(context,"One");
-                                            },
-                                            ),
-                                            CupertinoActionSheetAction(
-                                              child: Text("g"),
-                                              onPressed: (){
-                                                Navigator.pop(context,"One");
-                                              },
-                                            ),
-                                            CupertinoActionSheetAction(
-                                              child: Text("mcg"),
-                                              onPressed: (){
-                                                Navigator.pop(context,"One");
-                                              },
-                                            ),
-                                            CupertinoActionSheetAction(
-                                              child: Text("iu"),
-                                              onPressed: (){
-                                                Navigator.pop(context,"One");
-                                              },
-                                            ),
-                                            CupertinoActionSheetAction(
-                                              child: Text("ml"),
-                                              onPressed: (){
-                                                Navigator.pop(context,"One");
-                                              },
-                                            ),
-                                            CupertinoActionSheetAction(
-                                              child: Text("pill(s)"),
-                                              onPressed: (){
-                                                Navigator.pop(context,"One");
-                                              },
-                                            ),
-                                            CupertinoActionSheetAction(
-                                              child:  Text("tbsp"),
-                                              onPressed: (){
-                                                Navigator.pop(context,"One");
-                                              },
-                                            ),
-                                            CupertinoActionSheetAction(
-                                              child: Text("cups"),
-                                              onPressed: (){
-                                                Navigator.pop(context,"One");
-                                              },
-                                            ),
-                                            CupertinoActionSheetAction(
-                                              child: Text("tsp"),
-                                              onPressed: (){
-                                                Navigator.pop(context,"One");
-                                              },
-                                            ),
-                                            CupertinoActionSheetAction(
-                                              child: Text("L"),
-                                              onPressed: (){
-                                                Navigator.pop(context,"One");
-                                              },
-                                            ),
-                                            CupertinoActionSheetAction(
-                                              child: Text("lozenge(s)"),
-                                              onPressed: (){Navigator.pop(context,"One");},
-                                            ),
-                                            CupertinoActionSheetAction(
-                                              child: Text("syrup"),
-                                              onPressed: (){Navigator.pop(context,"One");},
-                                            ),
-                                            CupertinoActionSheetAction(
-                                              child: Text("drop(s)"),
-                                              onPressed: (){Navigator.pop(context,"One");},
-                                            ),
-                                            CupertinoActionSheetAction(
-                                              child: Text("spray(s)"),
-                                              onPressed: (){Navigator.pop(context,"One");},
-                                            ),
-                                            CupertinoActionSheetAction(
-                                              child: Text("injection"),
-                                              onPressed: (){Navigator.pop(context,"One");},
-                                            ),CupertinoActionSheetAction(
-                                              child: Text("ointment"),
-                                              onPressed: (){Navigator.pop(context,"One");},
-                                            ),CupertinoActionSheetAction(
-                                              child: Text("inhalation"),
-                                              onPressed: (){Navigator.pop(context,"One");},
-                                            ),
-                                          ],
-                                        cancelButton: CupertinoActionSheetAction(
-                                          child: Text("Cancel"),
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                        ),
-                                      );
-                                      showCupertinoModalPopup(
-                                          context: context, builder: (context) => action);
-                                    },
-                                  )
-                                ),
-                                  //Text("Selected:${_selectedUnits.name}"),
-                                ]
                               ),
-                              new Padding(padding: EdgeInsets.only(top:10.0)),
+                              new Padding(padding: EdgeInsets.only(top:20.0)),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
@@ -365,6 +167,7 @@ class _addMedPageState extends State<addMedPage>{
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 15.0,
+                                      
                                     ),),
                                 ],
                               ),
@@ -400,54 +203,53 @@ class _addMedPageState extends State<addMedPage>{
                                           }, currentTime: DateTime.now(), locale : LocaleType.en);
                                         },
                                         child: Container(
-                                         alignment: Alignment.center,
-                                         height: 50.0,
-                                         child: Row(
-                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                           children: <Widget>[
-                                             Row(
-                                               children: [
-                                                 Container(
-                                                   child: Row(
-                                                     mainAxisAlignment: MainAxisAlignment.start,
-                                                     children: [
-                                                       Icon(
-                                                         Icons.date_range,
-                                                         size: 25.0,
-                                                         color: Colors.white,
+                                          alignment: Alignment.center,
+                                          height: 50.0,
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: <Widget>[
+                                              Row(
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                      children: [
+                                                        Icon(
+                                                          Icons.date_range,
+                                                          size: 25.0,
+                                                          color: Colors.white,
 
-                                                       ),
-                                                       Padding(padding: EdgeInsets.only(left: 20.0)),
-                                                       Text(
-                                                         "$_date",
-                                                         style: TextStyle(
-                                                           color: Colors.white,
-                                                           //fontWeight: FontWeight.bold,
-                                                           fontSize: 18.0,
-                                                         ),
-                                                       )
-                                                     ],
-                                                   ),
-                                                 ),
-                                               ],
-                                             ),
-                                             Padding(padding: EdgeInsets.only(left: 85.0)),
-                                             Text(
-                                               "Change",
-                                                 style:TextStyle(
-                                                   color:Colors.white,
-                                                   fontSize: 18.0,
-                                                 )
-                                             )
-                                           ],
-                                         ),
+                                                        ),
+                                                        Padding(padding: EdgeInsets.only(left: 20.0)),
+                                                        Text(
+                                                          "$_date",
+                                                          style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontWeight: FontWeight.w300,
+                                                            fontSize: 18.0,
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Padding(padding: EdgeInsets.only(left: 85.0)),
+                                              Text(
+                                                "Change",
+                                                  style:TextStyle(
+                                                    color:Colors.white,
+                                                    fontSize: 18.0,
+                                                    fontWeight: FontWeight.w300
+                                                  )
+                                              )
+                                            ],
+                                          ),
                                         )),
                                   ),
                                 ],
                               ),
-//                            Padding(
-//                                padding: const EdgeInsets.only(top: 10.0) ),
-                              new Padding(padding: EdgeInsets.only(top:10.0)),
+                              new Padding(padding: EdgeInsets.only(top:20.0)),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
@@ -513,7 +315,7 @@ class _addMedPageState extends State<addMedPage>{
                                                           "$_date1",
                                                           style: TextStyle(
                                                             color: Colors.white,
-                                                            //fontWeight: FontWeight.bold,
+                                                            fontWeight: FontWeight.w300,
                                                             fontSize: 18.0,
                                                           ),
                                                         )
@@ -528,6 +330,7 @@ class _addMedPageState extends State<addMedPage>{
                                                   style:TextStyle(
                                                     color:Colors.white,
                                                     fontSize: 18.0,
+                                                    fontWeight: FontWeight.w300
                                                   )
                                               )
                                             ],
@@ -537,8 +340,7 @@ class _addMedPageState extends State<addMedPage>{
                                 ],
                               ),
                               Padding(
-                                  padding: const EdgeInsets.only(top: 10.0) ),
-                              //new Padding(padding: EdgeInsets.only(top:10.0)),
+                                  padding: const EdgeInsets.only(top: 20.0) ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
@@ -604,7 +406,7 @@ class _addMedPageState extends State<addMedPage>{
                                                           "$_time",
                                                           style: TextStyle(
                                                             color: Colors.white,
-                                                            //fontWeight: FontWeight.bold,
+                                                            fontWeight: FontWeight.w300,
                                                             fontSize: 18.0,
                                                           ),
                                                         )
@@ -619,6 +421,7 @@ class _addMedPageState extends State<addMedPage>{
                                                   style:TextStyle(
                                                     color:Colors.white,
                                                     fontSize: 18.0,
+                                                    fontWeight: FontWeight.w300
                                                   )
                                               )
                                             ],
@@ -628,7 +431,7 @@ class _addMedPageState extends State<addMedPage>{
                                 ],
                               ),
                               Padding(
-                                  padding: const EdgeInsets.only(top: 10.0) ),
+                                  padding: const EdgeInsets.only(top: 20.0) ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
@@ -637,6 +440,7 @@ class _addMedPageState extends State<addMedPage>{
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 15.0,
+                                      
                                     ),),
                                 ],
                               ),
@@ -651,13 +455,13 @@ class _addMedPageState extends State<addMedPage>{
                                 selectedBorderColor: Colors.teal,
                                 //renderBorder: true,
                                 children: <Widget>[
-                                  Text("M"),
-                                  Text("T"),
-                                  Text("W"),
-                                  Text("T"),
-                                  Text("F"),
-                                  Text("S"),
-                                  Text("S"),
+                                  Text("M",style: TextStyle(fontWeight: FontWeight.w300),),
+                                  Text("T",style: TextStyle(fontWeight: FontWeight.w300),),
+                                  Text("W",style: TextStyle(fontWeight: FontWeight.w300),),
+                                  Text("T",style: TextStyle(fontWeight: FontWeight.w300),),
+                                  Text("F",style: TextStyle(fontWeight: FontWeight.w300),),
+                                  Text("S",style: TextStyle(fontWeight: FontWeight.w300),),
+                                  Text("S",style: TextStyle(fontWeight: FontWeight.w300),),
                                 ],
                                 isSelected: isSelected,
                                 onPressed: (int index){
@@ -666,19 +470,35 @@ class _addMedPageState extends State<addMedPage>{
                                   });
                                 },
                               ),
-                              new Padding(padding: EdgeInsets.only(top:20.0)),
-                              MaterialButton(
-                                height: 50.0,
-                                minWidth: 70.0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: new BorderRadius.circular(15.0),
-                                  side: BorderSide(color: Colors.white10),
+                              new Padding(padding: EdgeInsets.only(top:100.0)),
+                              Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                  height: 70.0,
+                                  width: 500.0,
+                                  child: MaterialButton(
+                                    height: 50.0,
+                                    minWidth: 70.0,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: new BorderRadius.circular(10.0),
+                                      side: BorderSide(color: Colors.white10),
+                                    ),
+                                    color:Colors.teal,
+                                    textColor: Colors.white,
+                                    child: new Text(
+                                      "Submit",
+                                      style: TextStyle(
+                                        color:Colors.white,
+                                        fontSize:20.0,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                      ),
+                                    onPressed: (){
+                                      Navigator.of(context).pushNamed('/careplan');
+                                    },
+                                    splashColor: Colors.white70,
+                                  ),
                                 ),
-                                color:Colors.teal,
-                                textColor: Colors.white,
-                                child: new Text("Submit"),
-                                onPressed: (){},
-                                splashColor: Colors.white70,
                               )
                             ])
                       )
@@ -693,20 +513,6 @@ class _addMedPageState extends State<addMedPage>{
   }
 }
 
-class customContainer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      child:new Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children:<Widget>[
-
-
-        ],
-      ) ,
-    );
-  }
-}
 
 
 //////custom location FAB
