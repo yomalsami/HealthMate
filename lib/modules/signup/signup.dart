@@ -226,9 +226,9 @@ class SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateMi
                                       "Other",
                                     ],
                                     checked: _checked,
-                                   onChange: (bool _isChecked, String label, int index)=>
+                                  onChange: (bool _isChecked, String label, int index)=>
                                     print("isChecked:$_isChecked label:$label index: $index"),
-                                   onSelected:(List selected) =>setState((){
+                                  onSelected:(List selected) =>setState((){
                                       if (selected.length>1){
                                         selected.removeAt(0);
                                       }

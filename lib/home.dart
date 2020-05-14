@@ -15,6 +15,41 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   // final TextEditingController _controller = new TextEditingController();
+  //   PageController pageController = PageController(
+  //   initialPage: 0,
+  //   keepPage: true,
+  // );
+
+  //   Widget buildPageView() {
+  //   return PageView(
+  //     controller: pageController,
+  //     onPageChanged: (index) {
+  //       pageChanged(index);
+  //     },
+  //     children: <Widget>[
+  //       ReminderPage(),
+  //       carePlanPage(),
+  //       Settings(),
+  //     ],
+  //   );
+  // }
+
+  //   void pageChanged(int index) {
+  //   setState(() {
+  //     currentTab = index;
+  //   });
+  // }
+
+  //   void bottomTapped(int index) {
+  //   setState(() {
+  //     currentTab = index;
+  //     pageController.animateToPage(index, duration: Duration(milliseconds: 500), curve: Curves.ease);
+  //   });
+  // }
+
+  
+
+
 
   @override
   initState() {
@@ -38,7 +73,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body:PageStorage(
         child: currentScreen,
         bucket: bucket,
@@ -100,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                   MaterialButton(
                     minWidth:40,
                     onPressed: (){
-                      setState(() {
+                      setState(() {                        
                         currentScreen= carePlanPage();
                         currentTab=1;
                       });

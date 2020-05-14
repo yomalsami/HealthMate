@@ -30,14 +30,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: editProfile(),
+        home: editEmergency(),
         routes: <String,WidgetBuilder>{
           '/vital':(_) =>new vitalHomePage(),
+          '/reminders':(_) =>new ReminderPage(),
+          '/careplan':(_) =>new carePlanPage(),
           '/addmed': (_) =>new addMedPage(),
           '/addact': (_) =>new addMedPage(),
           '/home': (_) =>new HomePage(),
           '/emergency':(_)=> new emergencyPage(),
           '/editProfile':(_)=> new editProfile(),
+          '/editemergency':(_)=> new editEmergency(),
         },
         theme:new ThemeData(
           scaffoldBackgroundColor: Colors.black,
