@@ -19,7 +19,10 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
   Animation<double> _animation;
   FocusNode _focusNode1;
   FocusNode _focusNode2;
-
+  final GlobalKey<FormState> _formKey1 =GlobalKey<FormState>();
+  bool _autoValidate1 =false;
+  String _password;
+  String _email;
 
   /////////////////////////implements LoginPageContract(part in state)
 //  BuildContext _ctx;
@@ -70,12 +73,12 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
     _animation.addListener(()=> this.setState(() { }));
     _animationController.forward();
   }
- @override
- void _requestFocus1(){
+  @override
+  void _requestFocus1(){
     setState(() {
       FocusScope.of(context).requestFocus(_focusNode1);
     });
- }
+  }
 
   @override
   void _requestFocus2(){
@@ -112,19 +115,23 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
               new Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  new Container(
-                    child: new Image.asset(
-                        'images/logo.JPEG',
-                      height: 150.0,
-                      width: 150.0,
-                      //fit: BoxFit.cover,
+                  Align(
+                    alignment: Alignment.center,
+                    child: new Container(
+                      child: new Image.asset(
+                          'images/logo.JPEG',
+                        height: 150.0,
+                        width: 150.0,
+                        //fit: BoxFit.cover,
+                      ),
                     ),
                   )
 
                 ],
               ),
               new Form(
-                //key: formKey,
+                key: _formKey1,
+                autovalidate: _autoValidate1,
                 child: new Theme(
                   data:new ThemeData(
                     brightness: Brightness.dark,primarySwatch: Colors.teal,
@@ -133,17 +140,20 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                           color: Colors.black,
                           fontSize: 20.0,
                         )) ),
-                 child: new Container(
+                child: new Container(
                   padding: const EdgeInsets.all(40.0),
                   child: new Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         new TextFormField(
-//                          onFieldSubmitted: (v){
-//                            FocusScope.of(context).requestFocus(_focusNode1);
-//                          },
-//                          textInputAction: TextInputAction.next,
-                          //onSaved: (val) => _username = val,
+                          validator: validateEmail,
+                          onFieldSubmitted: (v){
+                            FocusScope.of(context).requestFocus(_focusNode2);
+                          },
+                          textInputAction: TextInputAction.next,
+                          onSaved: (String val){
+                            _email= val;
+                          },
                           focusNode: _focusNode1,
                           onTap: _requestFocus1,
                           decoration: new InputDecoration(
@@ -171,6 +181,10 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                         new TextFormField(
                           focusNode: _focusNode2,
                           onTap: _requestFocus2,
+                          validator: validatePassword,
+                          onSaved: (String val){
+                            _password=val;
+                          },
                           decoration: new InputDecoration(
                               labelText: "Password",
                               hintText: "Enter the Password",
@@ -205,11 +219,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                           color:Colors.teal,
                           textColor: Colors.white,
                           child: new Text("Login"),
-                          onPressed: (){
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => HomePage()));
-                          },
+                          onPressed: _validateInputs,
                           splashColor: Colors.white70,
                         )
                       ],
@@ -222,7 +232,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
             ],
           )
       );
-  }
+  
 
 //  @override
 //  void onLoginError(String error) {
@@ -245,5 +255,39 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
 //    await db.saveUser(user);
 //    Navigator.of(context).pushNamed("/home");
 //  }
+  }
+  void _validateInputs(){
+    if (_formKey1.currentState.validate()){
+      _formKey1.currentState.save();
+      setState(() {
+        Navigator.of(context).pushNamed('/home');
+      });
+    }
+    else {
+      setState(() {
+        _autoValidate1= true;
+      });
+    }
+  }
+}
+
+String validatePassword(String value){
+  if(value.length<8)
+    return 'Password shouldn\'t be empty';
+  else 
+    return null;
+}
+
+String validateEmail(String value){
+  Pattern pattern =
+  r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+  RegExp regex=new RegExp(pattern);
+  if(value.length==0){
+    return 'Please enter Email';
+  }
+  else if(!regex.hasMatch(value)){
+    return 'Please enter valid Email';
+  }
+  return null;
 }
 

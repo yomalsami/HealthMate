@@ -18,6 +18,11 @@ class SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateMi
   FocusNode _focusNode3;
   bool _Checked=false;
   bool _isEnabled=true;
+  final GlobalKey<FormState> _formKey1 =GlobalKey<FormState>();
+  bool _autoValidate1 =false;
+  String _password;
+  String _email;
+  var _age;
 
 
   _onChanged(){
@@ -86,15 +91,6 @@ class SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateMi
   @override
   Widget build(BuildContext context) {
 
-    var _onPressed;
-    if (_Checked){
-      _onPressed =(){
-        print("success");
-
-      };
-    }
-    List <String> _checked = [];
-
     return new Scaffold(
         backgroundColor: Colors.black,
         body:SingleChildScrollView(
@@ -103,23 +99,29 @@ class SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateMi
               new Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    new Padding(padding: EdgeInsets.only(top:100.0)),
                     new Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-
-                        new Container(
-                          padding: const EdgeInsets.only(top:0.0),
-                          child: new Image.asset(
-                            'images/logo.JPEG',
-                            height: 150.0,
-                            width: 150.0,
-                            //fit: BoxFit.cover,
+                        Align(
+                          alignment: Alignment.center,
+                            child: new Container(
+                            padding: const EdgeInsets.only(top:0.0),
+                            child: new Image.asset(
+                              'images/logo.JPEG',
+                              height: 150.0,
+                              width: 150.0,
+                              //fit: BoxFit.cover,
+                            ),
                           ),
                         )
 
                       ],
                     ),
+                    Padding(padding: EdgeInsets.only(top:100.0)),
                     new Form(
+                      key: _formKey1,
+                      autovalidate: _autoValidate1,
                       child: new Theme(
                         data:new ThemeData(
                             brightness: Brightness.dark,primarySwatch: Colors.teal,
@@ -134,11 +136,19 @@ class SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateMi
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
                               new TextFormField(
+                                validator: validateEmail,
+                                onFieldSubmitted: (v){
+                                  FocusScope.of(context).requestFocus(_focusNode2);
+                                },
+                                textInputAction: TextInputAction.next,
+                                onSaved: (String val){
+                                  _email= val;
+                                },
                                 focusNode: _focusNode1,
                                 onTap: _requestFocus1,
                                 decoration: new InputDecoration(
                                     labelText: "Email Address",
-                                    hintText: "Enter your Email Address(you@email.com)",
+                                    hintText: "Enter your Email Address",
                                     border: new OutlineInputBorder(
                                       borderRadius: new BorderRadius.circular(15.0),
                                       borderSide: BorderSide(
@@ -159,6 +169,14 @@ class SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateMi
                               ),
                               new Padding(padding: EdgeInsets.only(top:20.0)),
                               new TextFormField(
+                                validator: validatePassword,
+                                onFieldSubmitted: (v){
+                                  FocusScope.of(context).requestFocus(_focusNode3);
+                                },
+                                textInputAction: TextInputAction.next,
+                                onSaved: (String val){
+                                  _password= val;
+                                },
                                 focusNode: _focusNode2,
                                 onTap: _requestFocus2,
                                 decoration: new InputDecoration(
@@ -187,6 +205,11 @@ class SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateMi
                                //   padding: const EdgeInsets.only(top: 40.0) ),
                               new Padding(padding: EdgeInsets.only(top:20.0)),
                               new TextFormField(
+                                validator: validateAge,
+                                textInputAction: TextInputAction.done,
+                                onSaved: (val){
+                                  _age= val;
+                                },
                                 focusNode: _focusNode3,
                                 onTap: _requestFocus3,
                                 decoration: new InputDecoration(
@@ -211,44 +234,7 @@ class SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateMi
                                 keyboardType:TextInputType.number,
 
                               ),
-                              new Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[
-                                  CheckboxGroup(
-                                    orientation: GroupedButtonsOrientation.HORIZONTAL,
-                                    padding: EdgeInsets.only(left: 100.0),
-                                    labelStyle: TextStyle(
-                                      color: Colors.white,
-                                    ),
-                                    labels:<String>[
-                                      "Male",
-                                      "Female",
-                                      "Other",
-                                    ],
-                                    checked: _checked,
-                                  onChange: (bool _isChecked, String label, int index)=>
-                                    print("isChecked:$_isChecked label:$label index: $index"),
-                                  onSelected:(List selected) =>setState((){
-                                      if (selected.length>1){
-                                        selected.removeAt(0);
-                                      }
-                                      _checked=selected;
-                                    }),
-                                  ),
-                                ],
-                              ),
                               new Padding(padding: const EdgeInsets.only(top: 10.0)),
-                              new CheckboxListTile(
-                                title: Text("I agree to the terms of service"),
-                                value: _Checked,
-                                onChanged: _isEnabled
-                                ? (val) {
-                                  setState(() {
-                                    _Checked= val;
-                                  });
-                                }:null,
-                              ),
-
                               new Padding(
                                   padding: const EdgeInsets.only(top: 10.0) ),
                               new MaterialButton(
@@ -261,11 +247,7 @@ class SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateMi
                                 color:Colors.teal,
                                 textColor: Colors.white,
                                 child: new Text("COMPLETE SIGN UP ->"),
-                                onPressed: (){
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(builder: (context) => HomePage()));
-                                },
+                                onPressed: _validateInputs,
                                 splashColor: Colors.white70,
                               ),
 
@@ -279,6 +261,50 @@ class SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateMi
         ));
 
   }
+  void _validateInputs(){
+    if (_formKey1.currentState.validate()){
+      _formKey1.currentState.save();
+      setState(() {
+        Navigator.of(context).pushNamed('/login');
+      });
+    }
+    else {
+      setState(() {
+        _autoValidate1= true;
+      });
+    }
+  }
+}
+
+
+
+String validatePassword(String value){
+  if(value.length<8)
+    return 'Password shouldn\'t be empty';
+  else 
+    return null;
+}
+
+String validateEmail(String value){
+  Pattern pattern =
+  r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+  RegExp regex=new RegExp(pattern);
+  if(value.length==0){
+    return 'Please enter Email';
+  }
+  else if(!regex.hasMatch(value)){
+    return 'Please enter valid Email';
+  }
+  return null;
+}
+
+String validateAge(var value){
+  if(value.length<1)
+    return 'Age shouldn\'t be empty';
+  else if (double.parse(value)==0)
+    return 'Enter valid Age';
+  else 
+    return null; 
 }
 
 

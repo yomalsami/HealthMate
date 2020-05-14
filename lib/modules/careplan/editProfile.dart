@@ -13,11 +13,14 @@ class editProfile extends StatefulWidget {
 
 class _editProfileState extends State<editProfile> {
 
+  final GlobalKey<FormState> _formKey1 =GlobalKey<FormState>();
+  bool _autoValidate1 =false;
   bool isSwitched = false;
-  //bool _Checked=false;
   FocusNode _focusNode1;
   FocusNode _focusNode2;
   FocusNode _focusNode3;
+  String _name;
+  
 
   String dropdownValue= 'A+';
 
@@ -32,12 +35,19 @@ class _editProfileState extends State<editProfile> {
   @override
   void _requestFocus1(){
     setState(() {
-      FocusScope.of(context).requestFocus(_focusNode2);
+      FocusScope.of(context).requestFocus(_focusNode1);
     });
   }
 
   @override
   void _requestFocus2(){
+    setState(() {
+      FocusScope.of(context).requestFocus(_focusNode2);
+    });
+  }
+
+    @override
+  void _requestFocus3(){
     setState(() {
       FocusScope.of(context).requestFocus(_focusNode3);
     });
@@ -166,6 +176,8 @@ class _editProfileState extends State<editProfile> {
             ),
             Padding(padding: EdgeInsets.only(top:20.0),),
             new Form(
+              key: _formKey1,
+              autovalidate: _autoValidate1,
               child:Theme(
                       data:new ThemeData(
                           inputDecorationTheme:new InputDecorationTheme(
@@ -176,17 +188,22 @@ class _editProfileState extends State<editProfile> {
               child: Column(
               children:<Widget>[
                 new TextFormField(
+                  
                   onFieldSubmitted: (v){
                     FocusScope.of(context).requestFocus(_focusNode2);
                   },
                   textInputAction: TextInputAction.next,
                   focusNode: _focusNode1,
+                  validator:validateName,
+                  onSaved: (String val){
+                    _name=val;
+                  },   
                   onTap: _requestFocus1,
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please enter some text';
-                    }
-                  return null;},
+                  // validator: (value) {
+                  //   if (value.isEmpty) {
+                  //     return 'Please enter some text';
+                  //   }
+                  // return null;},
                   decoration: new InputDecoration(
                     labelText: "Your Name",
                     border: new OutlineInputBorder(
@@ -234,12 +251,9 @@ class _editProfileState extends State<editProfile> {
                 ),
                 Padding(padding: EdgeInsets.only(top: 20.0)),
                 new TextFormField(
-                  // onFieldSubmitted: (v){
-                  //   FocusScope.of(context).requestFocus(_focusNode2);
-                  // },
                   textInputAction: TextInputAction.done,
                   focusNode: _focusNode3,
-                  //onTap: _requestFocus3, 
+                  onTap: _requestFocus3, 
                   decoration: new InputDecoration(
                     labelText: "Weight(optional)",
                     suffixText: "KGs",
@@ -278,8 +292,7 @@ class _editProfileState extends State<editProfile> {
                 GenderSelection(
                   maleText: "Male", //default Male
                   femaleText: "Female", //default Female
-                  //linearGradient: pinkRedGradient,
-                  selectedGenderIconBackgroundColor: Colors.indigo, // default red 
+                  selectedGenderIconBackgroundColor: Colors.red, // default red 
                   checkIconAlignment: Alignment.centerRight,   // default bottomRight
                   selectedGenderCheckIcon: null, // default Icons.check
                   onChanged: (Gender gender){
@@ -328,7 +341,7 @@ class _editProfileState extends State<editProfile> {
                         dropdownValue=newValue;
                       });
                     },
-                    items: <String>['A+','A-','B+','B-','AB+','AB-','O+','O-']
+                    items: <String>['A+','A-','B+','B-','AB+','AB-','O+','O-','Don\'t know']
                           .map<DropdownMenuItem<String>>((String value){
                             return DropdownMenuItem<String>(
                               value: value,
@@ -342,9 +355,7 @@ class _editProfileState extends State<editProfile> {
                     height: 50.0,
                     width: 400.0,
                     child: RaisedButton(
-                      onPressed: (){
-                        Navigator.of(context).pushNamed("/editemergency");
-                      },
+                      onPressed: _validateInputs,
                       elevation: 16.0,
                       splashColor: Colors.white10,
                       child: new Text(
@@ -364,8 +375,28 @@ class _editProfileState extends State<editProfile> {
           ]
         ),),
     );
+    
   }
+  void _validateInputs(){
+    if (_formKey1.currentState.validate()){
+      _formKey1.currentState.save();
+      setState(() {
+        Navigator.of(context).pushNamed('/editemergency');
+      });
+    }
+    else {
+      setState(() {
+        _autoValidate1= true;
+      });
+    }
+  }
+  
 }
+
+
+
+
+
 
 
 
@@ -373,10 +404,20 @@ class _editProfileState extends State<editProfile> {
 
 class editEmergency extends StatefulWidget {
   @override
+
+  editEmergency({Key key}) : super(key: key);
+
   _editEmergencyState createState() => _editEmergencyState();
 }
 
 class _editEmergencyState extends State<editEmergency> {
+  final GlobalKey<FormState> _formKey2 = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey3 = GlobalKey<FormState>();
+  bool _autoValidate2=false;
+  bool _autoValidate3=false;
+  String _name;
+  String _mobile;
+
 
   FocusNode _focusNode4;
   FocusNode _focusNode5;
@@ -528,6 +569,8 @@ class _editEmergencyState extends State<editEmergency> {
                       )
                     ),
                     Form(
+                      key: _formKey2,
+                      autovalidate: _autoValidate2,
                       child: Theme(
                         data: new ThemeData(
                           inputDecorationTheme: new InputDecorationTheme(
@@ -541,6 +584,10 @@ class _editEmergencyState extends State<editEmergency> {
                           Container(
                             width: 380.0,
                             child: new TextFormField(
+                              validator: validateName,
+                              onSaved: (String val){
+                                _name = val;
+                              },
                               autocorrect: true,
                               onFieldSubmitted:(v){
                                 FocusScope.of(context).requestFocus(_focusNode5);
@@ -548,12 +595,12 @@ class _editEmergencyState extends State<editEmergency> {
                               textInputAction: TextInputAction.next,
                               focusNode: _focusNode4,
                               onTap: _requestFocus4,
-                              validator: (value){
-                                if (value.isEmpty){
-                                  return "Please enter some text";
-                                }
-                                return null;
-                              },
+                              // validator: (value){
+                              //   if (value.isEmpty){
+                              //     return "Please enter some text";
+                              //   }
+                              //   return null;
+                              // },
                               decoration: new InputDecoration(
                                 labelText: "Name of Contact",
                                 border: new OutlineInputBorder(
@@ -582,11 +629,9 @@ class _editEmergencyState extends State<editEmergency> {
                               textInputAction: TextInputAction.done,
                               focusNode: _focusNode5,
                               onTap: _requestFocus5,
-                              validator: (value){
-                                if (value.isEmpty){
-                                  return "Cannot be left empty!";
-                                }
-                                return null;
+                              validator: validateMobile,
+                              onSaved: (String val){
+                                _mobile=val;
                               },
                               decoration: new InputDecoration(
                                 labelText: "Phone Number of Contact",
@@ -630,7 +675,7 @@ class _editEmergencyState extends State<editEmergency> {
                         color:Colors.black,
                         size: 30.0,),
                       title:new Text(
-                        "Emergency Contact 2",
+                        "Emergency Contact 2*",
                         style:TextStyle(
                           color:Colors.black,
                           fontSize:20.0,
@@ -639,6 +684,8 @@ class _editEmergencyState extends State<editEmergency> {
                       )
                     ),
                     Form(
+                      key: _formKey3,
+                      autovalidate: _autoValidate3,
                       child: Theme(
                         data: new ThemeData(
                           inputDecorationTheme: new InputDecorationTheme(
@@ -652,6 +699,10 @@ class _editEmergencyState extends State<editEmergency> {
                           Container(
                             width: 380.0,
                             child: new TextFormField(
+                              validator: validateName,
+                              onSaved: (String val){
+                                _name=val;
+                              },
                               autocorrect: true,
                               onFieldSubmitted:(v){
                                 FocusScope.of(context).requestFocus(_focusNode7);
@@ -659,12 +710,6 @@ class _editEmergencyState extends State<editEmergency> {
                               textInputAction: TextInputAction.next,
                               focusNode: _focusNode6,
                               onTap: _requestFocus6,
-                              // validator: (value){
-                              //   if (value.isEmpty){
-                              //     return "Please enter some text";
-                              //   }
-                              //   return null;
-                              // },
                               decoration: new InputDecoration(
                                 labelText: "Name of Contact",
                                 border: new OutlineInputBorder(
@@ -687,9 +732,10 @@ class _editEmergencyState extends State<editEmergency> {
                             Container(
                               width: 380,
                               child: new TextFormField(
-                              // onFieldSubmitted:(v){
-                              //   FocusScope.of(context).requestFocus(_focusNode5);
-                              // },
+                              validator: validateMobile,
+                              onSaved: (String val){
+                                _mobile=val;
+                              },
                               textInputAction: TextInputAction.done,
                               focusNode: _focusNode7,
                               onTap: _requestFocus7,
@@ -784,9 +830,7 @@ class _editEmergencyState extends State<editEmergency> {
                     height: 50.0,
                     width: 400.0,
                     child: RaisedButton(
-                      onPressed: (){
-                        Navigator.of(context).pushNamed("/editemergency");
-                      },
+                      onPressed: _validateInputs,
                       elevation: 16.0,
                       splashColor: Colors.white10,
                       child: new Text(
@@ -807,4 +851,48 @@ class _editEmergencyState extends State<editEmergency> {
     ]
     )));
   }
+
+  void _validateInputs(){
+    if (_formKey2.currentState.validate()){
+      if(_formKey3.currentState.validate()){
+      _formKey2.currentState.save();
+      _formKey3.currentState.save();
+      Navigator.of(context).pushNamed("/emergency");
+    }
+    else{
+      setState(() {
+        _autoValidate3=true;
+      });
+    }
+    }
+    else {
+      setState(() {
+        _autoValidate2= true;
+        _autoValidate3=true;
+      });
+    }
+  }
+
+  
+}
+
+
+
+String validateName(String value){
+  if(value.length<3)
+    return 'Name must be more than 2 characters';
+  else 
+    return null;
+}
+
+String validateMobile(String value){
+  String pattern= r'(^(?:[+0]9)?[0-9]{10,12}$)';
+  RegExp regExp=new RegExp(pattern);
+  if(value.length==0){
+    return 'Please enter Mobile Number';
+  }
+  else if(!regExp.hasMatch(value)){
+    return 'Please enter valid mobile number';
+  }
+  return null;
 }
