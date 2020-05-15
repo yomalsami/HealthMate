@@ -77,7 +77,7 @@ class _resourcesState extends State<resources> {
                       thickness: 5.0,
                       color: Colors.black,),
                   ListTile(
-                    onTap: () {},
+                    onTap: () => _onButtonPressed2(),
                     trailing: Icon(
                       LineAwesomeIcons.chevron_right,
                       size:20.0,
@@ -119,6 +119,7 @@ class _resourcesState extends State<resources> {
       
     );
   }
+
   void _onButtonPressed1(){
     showModalBottomSheet(context: context, 
     builder:(context){
@@ -269,6 +270,104 @@ class _resourcesState extends State<resources> {
                           fontWeight: FontWeight.w500
                         ),
                       ),
+                    ),
+                    Divider(
+                      color: Colors.grey,
+                      height: 1.0,
+                      thickness: 1.0,
+                    ),
+
+                  ],
+
+            ),
+                ),
+              ),
+        ),
+          ),
+      );
+    });
+  }
+
+  
+  void _onButtonPressed2(){
+    showModalBottomSheet(context: context, 
+    builder:(context){
+      return Container(
+        color: Colors.black,
+        height: 300.0,
+          child: Container(
+          decoration: BoxDecoration(
+            color: Colors.teal,
+            borderRadius:BorderRadius.only(
+              topLeft: const Radius.circular(30.0),
+              topRight: const Radius.circular(30.0)
+            )
+          ),
+          child:Scaffold(
+              appBar: AppBar(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: const Radius.circular(30.0),
+                    topRight: const Radius.circular(30.0))
+                ),
+                leading: Padding(
+                padding: EdgeInsets.only(left:0)),
+              title:Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text("Care Teams"),
+                ],
+              ),
+              actions: <Widget>[
+              Padding(padding: EdgeInsets.only(left:20.0)),
+                  IconButton(icon: Icon(Icons.cancel,size: 30.0,color: Colors.white,), 
+                  onPressed: (){setState(() {
+                    Navigator.of(context).pop();
+                  });}),
+                ],
+              ),
+              body:Scrollbar(
+                child: SingleChildScrollView(
+                child: Column(
+                  children:<Widget>[
+                    Row(children: [
+                      Container(
+                        height:100.0,
+                        width: 353.0,
+                        child: Padding(
+                          padding: EdgeInsets.only(top:20.0,left:10.0),
+                          child: Text(
+                            "Learn More About Care Teams",
+                            style: TextStyle(
+                              fontSize:25.0,
+                              fontWeight:FontWeight.w600,
+                              color:Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.only(left:20.0)),
+                    ],),
+                    Padding(padding: EdgeInsets.only(top:10.0)),
+                    Divider(
+                      color: Colors.grey,
+                      height: 1.0,
+                      thickness: 1.0,
+                    ),
+                    ListTile(
+                      onTap: (){
+                        Navigator.of(context).popAndPushNamed("");
+                      },
+                      trailing: Icon(Icons.chevron_right,color: Colors.white,size: 25.0,),
+                      title: new Text(
+                        "What is an Emergency Contact and how do I add one?",
+                        style: TextStyle(
+                          color:Colors.white,
+                          fontSize:18.0,
+                          fontWeight: FontWeight.w500
+                        ),
+                      ),
+
                     ),
                     Divider(
                       color: Colors.grey,
