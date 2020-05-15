@@ -30,7 +30,6 @@ class _editProfileState extends State<editProfile> {
     _focusNode1 =FocusNode();
     _focusNode2 =FocusNode();
     _focusNode3 =FocusNode();
-    
   }
   @override
   void _requestFocus1(){
@@ -76,8 +75,7 @@ class _editProfileState extends State<editProfile> {
   }
 
   // List <String> _checked = [];
-
-
+  
 
 
   @override
@@ -85,67 +83,67 @@ class _editProfileState extends State<editProfile> {
   
   {
   List <String> _checked = [];
-  
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.redAccent,
-        leading: Padding(
-            padding: EdgeInsets.only(left:10),
-            child: IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: (){
-                Navigator.of(context).pushNamed('/emergency');
-              },
-
-            )),
-        title:Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("Edit Profile"),
-          ],
-        ),
-        actions: <Widget>[
-          IconButton(
-            onPressed: (){
-              setState(() {
-                Navigator.of(context).pushNamed("/home");
-              });
-            },
-            icon: Icon(LineAwesomeIcons.home, color: Colors.white,size: 30.0,),
-          ),
-        ],
-        ),
-        body: SingleChildScrollView(child: Column(
-          children:<Widget>[
-            Padding(padding: EdgeInsets.only(top:20.0),),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                new Container(
-                  height: 100.0,
-                  width: 400.0,
-                  child: Card(
-                    shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-                    margin: const EdgeInsets.all(8.0),
-                    color: Colors.redAccent,
-                    child: Column(
-                      children:<Widget>[
-                        ListTile(  
-                          title: new Text(
-                            "Keep HealthPlus Emergency Widget \non Your Phone's Lock Screen?",
-                            style: TextStyle(
-                              color:Colors.white,
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.w400,
-                            ),
-                            ),
-                            trailing: Switch(
-                              value: isSwitched,
-                              activeColor: Colors.white,
-                              autofocus: true,
-                              onChanged: (value){
+        return Scaffold(
+          backgroundColor: Colors.white,
+          appBar: AppBar(
+            backgroundColor: Colors.redAccent,
+            leading: Padding(
+                padding: EdgeInsets.only(left:10),
+                child: IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  onPressed: (){
+                    Navigator.of(context).pushNamed('/emergency');
+                  },
+    
+                )),
+            title:Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text("Edit Profile"),
+              ],
+            ),
+            actions: <Widget>[
+              IconButton(
+                onPressed: (){
+                  setState(() {
+                    Navigator.of(context).pushNamed("/home");
+                  });
+                },
+                icon: Icon(LineAwesomeIcons.home, color: Colors.white,size: 30.0,),
+              ),
+            ],
+            ),
+            body: SingleChildScrollView(child: Column(
+              children:<Widget>[
+                Padding(padding: EdgeInsets.only(top:20.0),),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    new Container(
+                      height: 100.0,
+                      width: 400.0,
+                      child: Card(
+                        shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                        margin: const EdgeInsets.all(8.0),
+                        color: Colors.redAccent,
+                        child: Column(
+                          children:<Widget>[
+                            ListTile(  
+                              title: new Text(
+                                "Keep HealthPlus Emergency Widget \non Your Phone's Lock Screen?",
+                                style: TextStyle(
+                                  color:Colors.white,
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                                ),
+                                trailing: Switch(
+                                  value: isSwitched,
+                                  activeColor: Colors.white,
+                                  autofocus: true,
+                                  onChanged:(value){
                                 setState(() {
+                                  
                                   isSwitched=value;
                                   print(isSwitched);
                                 });
@@ -397,7 +395,17 @@ class _editProfileState extends State<editProfile> {
       });
     }
   }
-  
+  Future onSelectNotification(String payload) async {
+    showDialog(
+      context: context,
+      builder: (_) {
+        return new AlertDialog(
+          title: Text("PayLoad"),
+          content: Text("Payload : $payload"),
+        );
+      },
+    );
+  }
 }
 
 

@@ -3,6 +3,7 @@ import 'package:cliniccare/home.dart';
 import 'package:cliniccare/modules/careplan/addmeasure.dart';
 import 'package:cliniccare/modules/careplan/homecare.dart';
 import 'package:cliniccare/modules/reminder/reminders.dart';
+import 'package:cliniccare/modules/setting/privacypolicy.dart';
 import 'package:cliniccare/modules/setting/setting.dart';
 import 'package:cliniccare/splash.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,8 @@ import 'modules/careplan/addmed.dart';
 import 'modules/emergency/editProfile.dart';
 import 'modules/emergency/emergency.dart';
 import 'modules/login/login_email.dart';
-
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'dart:async';
 import 'modules/signup/signup.dart';
 //import 'file:///F:/Flutter%20Projects/cliniccare/lib/splash.dart';
 
@@ -24,13 +26,22 @@ void main() {
 
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+
+
 
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: HomePage(),
+        home: privacyPage(),
         routes: <String,WidgetBuilder>{
           '/vital':(_) =>new vitalHomePage(),
           '/login':(_) =>new LoginPage(),
@@ -42,6 +53,7 @@ class MyApp extends StatelessWidget {
           '/emergency':(_)=> new emergencyPage(),
           '/editProfile':(_)=> new editProfile(),
           '/editemergency':(_)=> new editEmergency(),
+          '/setting':(_)=>new Settings(),
         },
         theme:new ThemeData(
           scaffoldBackgroundColor: Colors.black,

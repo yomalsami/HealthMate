@@ -35,7 +35,7 @@ dependencies:
   call_number:
   settings_ui:
   share: ^0.6.4+2
-  local_auth:
+  flutter_local_notifications:
   gender_selection:
 
 
