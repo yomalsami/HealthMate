@@ -46,7 +46,11 @@ class _SettingsState extends State<Settings> {
                 child:Column(
                   children: <Widget>[
                     ListTile(
-                      onTap:(){},
+                      onTap:(){
+                        setState(() {
+                          Navigator.of(context).pushNamed("/careteam");
+                        });
+                      },
                       leading: Icon(
                         LineAwesomeIcons.users,
                         color: Colors.white,
@@ -166,7 +170,9 @@ class _SettingsState extends State<Settings> {
                       color: Colors.black,
                     ),
                     ListTile(
-                      onTap:(){},
+                      onTap:(){
+                        Navigator.of(context).pushNamed('/privacy');
+                      },
                       leading: Icon(
                         LineAwesomeIcons.play,
                         color: Colors.white,
