@@ -96,7 +96,7 @@ class _resourcesState extends State<resources> {
                       thickness: 5.0,
                       color: Colors.black,),
                   ListTile(
-                    onTap: (){},
+                    onTap: () => _onButtonPressed3(),
                     trailing: Icon(
                       LineAwesomeIcons.chevron_right,
                       size:20.0,
@@ -264,6 +264,174 @@ class _resourcesState extends State<resources> {
                       },
                       title: new Text(
                         "How do I view all Care Plans",
+                        style: TextStyle(
+                          color:Colors.white,
+                          fontSize:18.0,
+                          fontWeight: FontWeight.w500
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.grey,
+                      height: 1.0,
+                      thickness: 1.0,
+                    ),
+
+                  ],
+
+            ),
+                ),
+              ),
+        ),
+          ),
+      );
+    });
+  }
+
+  void _onButtonPressed3(){
+    showModalBottomSheet(context: context, 
+    builder:(context){
+      return Container(
+        color: Colors.black,
+        height: 1000.0,
+          child: Container(
+          decoration: BoxDecoration(
+            color: Colors.teal,
+            borderRadius:BorderRadius.only(
+              topLeft: const Radius.circular(30.0),
+              topRight: const Radius.circular(30.0)
+            )
+          ),
+          child:Scaffold(
+              appBar: AppBar(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: const Radius.circular(30.0),
+                    topRight: const Radius.circular(30.0))
+                ),
+                leading: Padding(
+                padding: EdgeInsets.only(left:0)),
+              title:Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text("Emergency"),
+                ],
+              ),
+              actions: <Widget>[
+              Padding(padding: EdgeInsets.only(left:20.0)),
+                  IconButton(icon: Icon(Icons.cancel,size: 30.0,color: Colors.white,), 
+                  onPressed: (){setState(() {
+                    Navigator.of(context).pop();
+                  });}),
+                ],
+              ),
+              body:Scrollbar(
+                child: SingleChildScrollView(
+                child: Column(
+                  children:<Widget>[
+                    Row(children: [
+                      Container(
+                        height:100.0,
+                        width: 353.0,
+                        child: Padding(
+                          padding: EdgeInsets.only(top:20.0,left:10.0),
+                          child: Text(
+                            "Learn More About Emergency",
+                            style: TextStyle(
+                              fontSize:25.0,
+                              fontWeight:FontWeight.w600,
+                              color:Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.only(left:20.0)),
+                    ],),
+                    ListTile(
+                      // onTap: (){
+                      //   Navigator.of(context).pop("");
+                      // },
+                      title: new Text(
+                        "Emergency feature in the app allows you to make calls for police and ambulance directly from the app. Also distress messages can be sent with basic details and current location to people in Care Team.",
+                        style: TextStyle(
+                          color:Colors.white,
+                          fontSize:20.0,
+                          fontWeight: FontWeight.w300
+                        ),
+                      ),
+
+                    ),
+                    Padding(padding: EdgeInsets.only(top:10.0)),
+                    Divider(
+                      color: Colors.grey,
+                      height: 1.0,
+                      thickness: 1.0,
+                    ),
+                    ListTile(
+                      onTap: (){
+                        Navigator.of(context).popAndPushNamed("");
+                      },
+                      trailing: Icon(Icons.chevron_right,color: Colors.white,size: 25.0,),
+                      title: new Text(
+                        "How to do I call Ambulance?",
+                        style: TextStyle(
+                          color:Colors.white,
+                          fontSize:18.0,
+                          fontWeight: FontWeight.w500
+                        ),
+                      ),
+
+                    ),
+                    Divider(
+                      color: Colors.grey,
+                      height: 1.0,
+                      thickness: 1.0,
+                    ),
+                    ListTile(
+                      trailing: Icon(Icons.chevron_right,color: Colors.white,size: 25.0,),
+                      onTap: (){
+                        Navigator.of(context).popAndPushNamed("");
+                      },
+                      title: new Text(
+                        "How do I call Police?",
+                        style: TextStyle(
+                          color:Colors.white,
+                          fontSize:18.0,
+                          fontWeight: FontWeight.w500
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.grey,
+                      height: 1.0,
+                      thickness: 1.0,
+                    ),
+                    ListTile(
+                      trailing: Icon(Icons.chevron_right,color: Colors.white,size: 25.0,),
+                      onTap: (){
+                        Navigator.of(context).popAndPushNamed("");
+                      },
+                      title: new Text(
+                        "How to access SMS facility?",
+                        style: TextStyle(
+                          color:Colors.white,
+                          fontSize:18.0,
+                          fontWeight: FontWeight.w500
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.grey,
+                      height: 1.0,
+                      thickness: 1.0,
+                    ),
+                    ListTile(
+                      trailing: Icon(Icons.chevron_right,color: Colors.white,size: 25.0,),
+                      onTap: (){
+                        Navigator.of(context).popAndPushNamed("");
+                      },
+                      title: new Text(
+                        "How do I edit or view all people on Care Team?",
                         style: TextStyle(
                           color:Colors.white,
                           fontSize:18.0,
