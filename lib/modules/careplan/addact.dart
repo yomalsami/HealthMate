@@ -25,6 +25,9 @@ class addActPage extends StatefulWidget {
 
 
 class _addActPageState extends State<addActPage>{
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _autoValidate1=false;
+  String _name;
 
   String _time3 = "Choose your time";
   String _time1 = "Choose your time";
@@ -52,7 +55,8 @@ class _addActPageState extends State<addActPage>{
                 children: <Widget>[
                   Padding(padding: EdgeInsets.only(top: 60.0)),
                   new Form(
-                    //key: formKey,
+                    key: _formKey,
+                    autovalidate: _autoValidate1,
                       child: new Theme(
                           data:new ThemeData(
                               brightness: Brightness.dark,primarySwatch: Colors.teal,
@@ -66,9 +70,27 @@ class _addActPageState extends State<addActPage>{
                               child: new Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: <Widget>[
+                                    Align(
+                                      alignment: Alignment.center,
+                                      child: new Container(
+                                        height: 100.0,
+                                        width: 400.0,
+                                        child: new Text(
+                                        " Add Reminder For Activities",
+                                        style: TextStyle(
+                                          fontSize:30.0,
+                                          fontWeight: FontWeight.w200,
+                                          color:Colors.white
+                                        ),
+                                        )),
+                                    ),
                                     new TextFormField(
+                                      autovalidate: _autoValidate1,
+                                      textInputAction: TextInputAction.done,
+                                      onSaved: (String value){
+                                        _name=value;
+                                      },
                                       decoration: new InputDecoration(
-                                        //labelText: "Email Address",
                                         hintText: "Your Activity Name",
                                         border: new OutlineInputBorder(
                                           borderRadius: new BorderRadius.circular(15.0),
@@ -87,7 +109,7 @@ class _addActPageState extends State<addActPage>{
                                       keyboardType:TextInputType.text,
                                     ),
                                     Padding(
-                                        padding: const EdgeInsets.only(top: 10.0) ),
+                                        padding: const EdgeInsets.only(top: 20.0) ),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
@@ -153,7 +175,7 @@ class _addActPageState extends State<addActPage>{
                                                                 "$_time1",
                                                                 style: TextStyle(
                                                                   color: Colors.white,
-                                                                  //fontWeight: FontWeight.bold,
+                                                                  fontWeight: FontWeight.w300,
                                                                   fontSize: 18.0,
                                                                 ),
                                                               )
@@ -168,6 +190,7 @@ class _addActPageState extends State<addActPage>{
                                                         style:TextStyle(
                                                           color:Colors.white,
                                                           fontSize: 18.0,
+                                                          fontWeight: FontWeight.w300,
                                                         )
                                                     )
                                                   ],
@@ -177,8 +200,8 @@ class _addActPageState extends State<addActPage>{
                                       ],
                                     ),
                                     Padding(
-                                        padding: const EdgeInsets.only(top: 10.0) ),
-                                    //new Padding(padding: EdgeInsets.only(top:10.0)),
+                                        padding: const EdgeInsets.only(top: 20.0) ),
+                                  
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
@@ -244,7 +267,7 @@ class _addActPageState extends State<addActPage>{
                                                                 "$_time2",
                                                                 style: TextStyle(
                                                                   color: Colors.white,
-                                                                  //fontWeight: FontWeight.bold,
+                                                                  fontWeight: FontWeight.w300,
                                                                   fontSize: 18.0,
                                                                 ),
                                                               )
@@ -259,6 +282,7 @@ class _addActPageState extends State<addActPage>{
                                                         style:TextStyle(
                                                           color:Colors.white,
                                                           fontSize: 18.0,
+                                                          fontWeight: FontWeight.w300,
                                                         )
                                                     )
                                                   ],
@@ -268,7 +292,7 @@ class _addActPageState extends State<addActPage>{
                                       ],
                                     ),
                                     Padding(
-                                        padding: const EdgeInsets.only(top: 10.0) ),
+                                        padding: const EdgeInsets.only(top: 20.0) ),
                                     //new Padding(padding: EdgeInsets.only(top:10.0)),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.start,
@@ -335,7 +359,7 @@ class _addActPageState extends State<addActPage>{
                                                                 "$_time3",
                                                                 style: TextStyle(
                                                                   color: Colors.white,
-                                                                  //fontWeight: FontWeight.bold,
+                                                                  fontWeight: FontWeight.w300,
                                                                   fontSize: 18.0,
                                                                 ),
                                                               )
@@ -350,6 +374,7 @@ class _addActPageState extends State<addActPage>{
                                                         style:TextStyle(
                                                           color:Colors.white,
                                                           fontSize: 18.0,
+                                                          fontWeight: FontWeight.w300,
                                                         )
                                                     )
                                                   ],
@@ -359,7 +384,7 @@ class _addActPageState extends State<addActPage>{
                                       ],
                                     ),
                                     Padding(
-                                        padding: const EdgeInsets.only(top: 10.0) ),
+                                        padding: const EdgeInsets.only(top: 20.0) ),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
@@ -382,13 +407,13 @@ class _addActPageState extends State<addActPage>{
                                       selectedBorderColor: Colors.teal,
                                       //renderBorder: true,
                                       children: <Widget>[
-                                        Text("M"),
-                                        Text("T"),
-                                        Text("W"),
-                                        Text("T"),
-                                        Text("F"),
-                                        Text("S"),
-                                        Text("S"),
+                                        Text("M",style: TextStyle(fontWeight: FontWeight.w300),),
+                                        Text("T",style: TextStyle(fontWeight: FontWeight.w300),),
+                                        Text("W",style: TextStyle(fontWeight: FontWeight.w300),),
+                                        Text("T",style: TextStyle(fontWeight: FontWeight.w300),),
+                                        Text("F",style: TextStyle(fontWeight: FontWeight.w300),),
+                                        Text("S",style: TextStyle(fontWeight: FontWeight.w300),),
+                                        Text("S",style: TextStyle(fontWeight: FontWeight.w300),),
                                       ],
                                       isSelected: isSelected,
                                       onPressed: (int index){
@@ -397,20 +422,34 @@ class _addActPageState extends State<addActPage>{
                                         });
                                       },
                                     ),
-                                    new Padding(padding: EdgeInsets.only(top:20.0)),
-                                    MaterialButton(
-                                      height: 50.0,
-                                      minWidth: 70.0,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: new BorderRadius.circular(15.0),
-                                        side: BorderSide(color: Colors.white10),
-                                      ),
-                                      color:Colors.teal,
-                                      textColor: Colors.white,
-                                      child: new Text("Submit"),
-                                      onPressed: (){},
-                                      splashColor: Colors.white70,
-                                    )
+                                    new Padding(padding: EdgeInsets.only(top:60.0)),
+                                    Align(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                      height: 70.0,
+                                      width: 500.0,
+                                      child: MaterialButton(
+                                        height: 50.0,
+                                        minWidth: 70.0,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: new BorderRadius.circular(10.0),
+                                          side: BorderSide(color: Colors.white10),
+                                        ),
+                                        color:Colors.teal,
+                                        textColor: Colors.white,
+                                        child: new Text(
+                                          "Submit",
+                                          style: TextStyle(
+                                            color:Colors.white,
+                                            fontSize:20.0,
+                                            fontWeight: FontWeight.w300,
+                                          ),
+                                        ),
+                                    onPressed: _validateInputs,
+                                    splashColor: Colors.white70,
+                                  ),
+                                ),
+                              )
                                   ])
                           )
                       )
@@ -422,23 +461,26 @@ class _addActPageState extends State<addActPage>{
       ),
     );
   }
-}
 
-class customContainer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      child:new Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children:<Widget>[
-
-
-        ],
-      ) ,
-    );
+  void _validateInputs(){
+    if (_formKey.currentState.validate()){
+      _formKey.currentState.save();
+      Navigator.of(context).pushNamed("/careplan");
+    }
+    else{
+      setState(() {
+        _autoValidate1=true;
+      });
+    }
   }
 }
 
+String validateName(String value){
+  if(value.length<3)
+    return 'Name must be more than 2 characters';
+  else 
+    return null;
+}
 
 //////custom location FAB
 double _endOffset(ScaffoldPrelayoutGeometry scaffoldGeometry, { double offset = -160.0 }) {

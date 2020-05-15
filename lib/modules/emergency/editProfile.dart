@@ -106,7 +106,14 @@ class _editProfileState extends State<editProfile> {
           ],
         ),
         actions: <Widget>[
-          Padding(padding: EdgeInsets.only(left:50.0))
+          IconButton(
+            onPressed: (){
+              setState(() {
+                Navigator.of(context).pushNamed("/home");
+              });
+            },
+            icon: Icon(LineAwesomeIcons.home, color: Colors.white,size: 30.0,),
+          ),
         ],
         ),
         body: SingleChildScrollView(child: Column(
@@ -525,7 +532,14 @@ class _editEmergencyState extends State<editEmergency> {
           ],
         ),
         actions: <Widget>[
-          Padding(padding: EdgeInsets.only(left:50.0))
+          IconButton(
+            onPressed: (){
+              setState(() {
+                Navigator.of(context).pushNamed("/home");
+              });
+            },
+            icon: Icon(LineAwesomeIcons.home, color: Colors.white,size: 30.0,),
+          ),
         ],
         ),
         body: SingleChildScrollView(
@@ -739,12 +753,6 @@ class _editEmergencyState extends State<editEmergency> {
                               textInputAction: TextInputAction.done,
                               focusNode: _focusNode7,
                               onTap: _requestFocus7,
-                              // validator: (value){
-                              //   if (value.isEmpty){
-                              //     return "Cannot be left empty!";
-                              //   }
-                              //   return null;
-                              // },
                               decoration: new InputDecoration(
                                 labelText: "Phone Number of Contact",
                                 border: new OutlineInputBorder(

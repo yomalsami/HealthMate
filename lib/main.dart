@@ -1,7 +1,6 @@
 
 import 'package:cliniccare/home.dart';
 import 'package:cliniccare/modules/careplan/addmeasure.dart';
-import 'package:cliniccare/modules/careplan/emergency.dart';
 import 'package:cliniccare/modules/careplan/homecare.dart';
 import 'package:cliniccare/modules/reminder/reminders.dart';
 import 'package:cliniccare/modules/setting/setting.dart';
@@ -10,7 +9,8 @@ import 'package:flutter/material.dart';
 import 'modules/careplan/addact.dart';
 import 'modules/careplan/addmed.dart';
 import 'modules/careplan/addmed.dart';
-import 'modules/careplan/editProfile.dart';
+import 'modules/emergency/editProfile.dart';
+import 'modules/emergency/emergency.dart';
 import 'modules/login/login_email.dart';
 
 import 'modules/signup/signup.dart';
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: addMedPage(),
+        home: HomePage(),
         routes: <String,WidgetBuilder>{
           '/vital':(_) =>new vitalHomePage(),
           '/login':(_) =>new LoginPage(),

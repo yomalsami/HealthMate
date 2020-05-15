@@ -11,6 +11,11 @@ class vitalHomePage extends StatefulWidget {
 }
 
 class _vitalHomePageState extends State<vitalHomePage> {
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _autoValidate1=false;
+  var _sys;
+  var _dia;
   FocusNode _focusNode1;
   FocusNode _focusNode2;
 
@@ -62,12 +67,28 @@ class _vitalHomePageState extends State<vitalHomePage> {
           child:new Column(
           children: <Widget>[
             new Padding(padding: EdgeInsets.only(top: 30.0)),
-            new HomePageBody(),
+            Align(
+              alignment: Alignment.center,
+              child: new Container(
+                height: 100.0,
+                width: 400.0,
+                child: new Text(
+                  "  Add Details for Vitals",
+                  style: TextStyle(
+                    fontSize:40.0,
+                    color:Colors.white,
+                    fontWeight:FontWeight.w200,
+                  ),
+                ),
+              ),
+            ),
             Padding(padding: EdgeInsets.only(top:10.0)),
             Container(
               child: Column(
                 children: <Widget>[
                   new Form(
+                    key: _formKey,
+                    autovalidate:_autoValidate1,
                     child:Theme(
                       data:new ThemeData(
                           brightness: Brightness.dark,primarySwatch: Colors.teal,
@@ -78,48 +99,61 @@ class _vitalHomePageState extends State<vitalHomePage> {
                               )) ),
                       child: Column(
                         children: <Widget>[
-                          new TextFormField(
-                            onFieldSubmitted: (v){
-                              FocusScope.of(context).requestFocus(_focusNode2);
-                            },
-                            textInputAction: TextInputAction.next,
-                            focusNode: _focusNode1,
-                            onTap: _requestFocus1,
-                            decoration: new InputDecoration(
-                                labelText: "Systolic Pressure",
-                                hintText: "Enter the systolic pressure here",
-                                border: new OutlineInputBorder(
-                                  borderRadius: new BorderRadius.circular(20.0),
-                                  borderSide: BorderSide(
-                                    color: Colors.blue,
+                          Container(
+                            height: 70.0,
+                            width: 390.0,
+                            child: new TextFormField(
+                              validator: validate,
+                              onSaved: (value){
+                                _sys=value;
+                              },
+                              onFieldSubmitted: (v){
+                                FocusScope.of(context).requestFocus(_focusNode2);
+                              },
+                              textInputAction: TextInputAction.next,
+                              focusNode: _focusNode1,
+                              onTap: _requestFocus1,
+                              decoration: new InputDecoration(
+                                  labelText: "Systolic Pressure",
+                                  hintText: "Enter the systolic pressure here",
+                                  border: new OutlineInputBorder(
+                                    borderRadius: new BorderRadius.circular(20.0),
+                                    borderSide: BorderSide(
+                                      color: Colors.blue,
+                                    ),
                                   ),
-                                ),
-                                labelStyle: TextStyle(
-                                    color:_focusNode1.hasFocus ? Colors.blue : Colors.white)
+                                  labelStyle: TextStyle(
+                                      color:_focusNode1.hasFocus ? Colors.blue : Colors.white)
+                              ),
+                              keyboardType:TextInputType.number,
                             ),
-                            keyboardType:TextInputType.number,
                           ),
                           new Padding(padding: EdgeInsets.only(top:20.0)),
-                          new TextFormField(
-//                            onFieldSubmitted: (v){
-//                              FocusScope.of(context).requestFocus(_focusNode2);
-//                            },
-                            textInputAction: TextInputAction.done,
-                            focusNode: _focusNode2,
-                            onTap: _requestFocus2,
-                            decoration: new InputDecoration(
-                                labelText: "Diastolic Pressure",
-                                hintText: "Enter the systolic pressure here",
-                                border: new OutlineInputBorder(
-                                  borderRadius: new BorderRadius.circular(20.0),
-                                  borderSide: BorderSide(
-                                    color: Colors.blue,
+                          Container(
+                            height: 70.0,
+                            width: 390.0,
+                            child: new TextFormField(
+                              validator: validate,
+                              onSaved: (value){
+                                _dia=value;
+                              },
+                              textInputAction: TextInputAction.done,
+                              focusNode: _focusNode2,
+                              onTap: _requestFocus2,
+                              decoration: new InputDecoration(
+                                  labelText: "Diastolic Pressure",
+                                  hintText: "Enter the systolic pressure here",
+                                  border: new OutlineInputBorder(
+                                    borderRadius: new BorderRadius.circular(20.0),
+                                    borderSide: BorderSide(
+                                      color: Colors.blue,
+                                    ),
                                   ),
-                                ),
-                                labelStyle: TextStyle(
-                                    color:_focusNode2.hasFocus ? Colors.blue : Colors.white)
+                                  labelStyle: TextStyle(
+                                      color:_focusNode2.hasFocus ? Colors.blue : Colors.white)
+                              ),
+                              keyboardType:TextInputType.number,
                             ),
-                            keyboardType:TextInputType.number,
                           ),
                         ],
                       ),
@@ -222,35 +256,60 @@ class _vitalHomePageState extends State<vitalHomePage> {
                 SliderWidget(),
               ],
             ),
-            Padding(padding: EdgeInsets.only(top:30.0)),
-            new MaterialButton(
-                          height: 50.0,
-                          minWidth: 200.0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(15.0),
-                            side: BorderSide(color: Colors.white10),
-                          ),
-                          color:Colors.teal,
-                          textColor: Colors.white,
-                          child: new Text(
-                            "Submit",
-                            style: TextStyle(
-                              fontSize: 20.0
-                            
-                          ),),
-                          onPressed: (){
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => HomePage()));
-                          },
-                          splashColor: Colors.white70,
-                        )
+            new Padding(padding: EdgeInsets.only(top:30.0)),
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                height: 60.0,
+                width: 400.0,
+                child: MaterialButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(10.0),
+                    side: BorderSide(color: Colors.white10),
+                  ),
+                  color:Colors.teal,
+                  textColor: Colors.white,
+                  child: new Text(
+                    "Submit",
+                    style: TextStyle(
+                      color:Colors.white,
+                      fontSize:20.0,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                  onPressed: _validateInputs,
+                  splashColor: Colors.white70,
+                ),
+              ),
+            )
             ],
         )
       ),
     );
   }
+
+  void _validateInputs(){
+    if (_formKey.currentState.validate()){
+      _formKey.currentState.save();
+      Navigator.of(context).pushNamed("/careplan");
+    }
+    else{
+      setState(() {
+        _autoValidate1=true;
+      });
+    }
+  }
 }
+
+String validate(var value){
+  if(value.length<1)
+    return 'Quantity shouldn\'t be empty';
+  else if (double.parse(value)==0)
+    return 'Enter valid quantity';
+  else 
+    return null; 
+}
+
 
 
 class SliderWidget extends StatefulWidget {
@@ -363,6 +422,8 @@ class _SliderWidgetState extends State<SliderWidget> {
 }
 
 
+
+
 class CustomSliderThumbCircle extends SliderComponentShape {
   final double thumbRadius;
   final int min;
@@ -421,121 +482,6 @@ class CustomSliderThumbCircle extends SliderComponentShape {
     return ((max * value).round()).toString();
   }
 }
-
-
-
-
-
-
-
-
-
-class HomePageBody extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new IconRow();
-  }
-}
-
-
-class IconRow extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: new Container(
-        height: 60.0,
-        margin: const EdgeInsets.only(
-          left:0.0 ,
-          right: 24.0,
-          bottom: 10.0,
-          top: 16.0,
-        ),
-        child: new Stack(
-          children: <Widget>[
-            vitalCard,
-          ],
-        ),
-
-      ),
-    );
-  }
-}
-
-
-final vitalCard = new Container(
-  height: 50.0,
-  width: 400.0,
-  margin: new EdgeInsets.only(left: 20.0),
-  child: new Stack(
-    children: <Widget>[
-      new Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-//              new Container(
-//                  child:Icon(
-//                    LineAwesomeIcons.heart,
-//                    color: Colors.redAccent,
-//                    size: 60.0,
-//                  )
-//              ),
-              new Padding(padding: EdgeInsets.only(left: 40.0)),
-              new Container(
-                child: new Text(
-                  "Vitals",
-                  style: TextStyle(
-                    fontSize: 30.0,
-                    color: Colors.white,
-                    backgroundColor: new Color(0xFF333366),
-                    decorationColor: new Color(0xFF333366),
-                  ),
-                ),
-              ),
-              new Padding(padding: EdgeInsets.only(left: 30.0)),
-//              new Container(
-//                  child:Icon(
-//                    LineAwesomeIcons.arrow_right,
-//                    color: Colors.white,
-//                    size: 60.0,
-//                  )
-//              ),
-            ],
-          )
-        ],
-      )
-    ],
-  ),
-  decoration: new BoxDecoration(
-    color: new Color(0xFF333366),
-    shape: BoxShape.rectangle,
-    borderRadius: new BorderRadius.circular(50.0),
-    boxShadow: <BoxShadow>[
-      new BoxShadow(
-        color: Colors.black12,
-        blurRadius: 10.0,
-        offset: new Offset(0.0,10.0),
-      ),
-    ],
-  ),
-);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //////custom location FAB
 double _endOffset(ScaffoldPrelayoutGeometry scaffoldGeometry, { double offset = -160.0 }) {

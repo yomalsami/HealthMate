@@ -113,11 +113,17 @@ class _addMedPageState extends State<addMedPage>{
                                   )),
                               ),
                               new TextFormField(
-                                //validator: validateName,
+                                validator: validateName,
+                                autocorrect: true,
                                 onSaved: (String value){
                                   _name=value;
                                 },
-
+                                onFieldSubmitted: (v){
+                                  FocusScope.of(context).requestFocus(_focusNode2);
+                                },
+                                onTap: _requestFocus1,
+                                focusNode: _focusNode1,
+                                textInputAction: TextInputAction.next,
                                 decoration: new InputDecoration(
                                     hintText: "Medicine Name",
                                     border: new OutlineInputBorder(
@@ -140,6 +146,17 @@ class _addMedPageState extends State<addMedPage>{
                               Container(
                                 width: 400.0,
                                 child: new TextFormField(
+                                  validator: validateQuantity,
+                                  autocorrect: true,
+                                  autovalidate: _autoValidate1,
+                                  onSaved: (value){
+                                  _quant=value;
+                                  },
+                                  // onFieldSubmitted: (v){
+                                  //   FocusScope.of(context).requestFocus(_focusNode2);
+                                  // },
+                                onTap: _requestFocus2,
+                                focusNode: _focusNode2,
                                   decoration: new InputDecoration(
                                     hintText: "Dose Quantity",
                                     border: new OutlineInputBorder(
@@ -493,9 +510,7 @@ class _addMedPageState extends State<addMedPage>{
                                         fontWeight: FontWeight.w300,
                                       ),
                                       ),
-                                    onPressed: (){
-                                      Navigator.of(context).pushNamed('/careplan');
-                                    },
+                                    onPressed: _validateInputs,
                                     splashColor: Colors.white70,
                                   ),
                                 ),
@@ -511,6 +526,35 @@ class _addMedPageState extends State<addMedPage>{
         ),
     );
   }
+  void _validateInputs(){
+    if (_formKey.currentState.validate()){
+      _formKey.currentState.save();
+      Navigator.of(context).pushNamed("/careplan");
+    }
+    else{
+      setState(() {
+        _autoValidate1=true;
+      });
+    }
+  }
+}
+
+
+
+
+String validateQuantity(var value){
+  if(value.length<1)
+    return 'Quantity shouldn\'t be empty';
+  else if (double.parse(value)==0)
+    return 'Enter valid quantity';
+  else 
+    return null; 
+}
+String validateName(String value){
+  if(value.length<3)
+    return 'Name must be more than 2 characters';
+  else 
+    return null;
 }
 
 
