@@ -121,7 +121,11 @@ class _SettingsState extends State<Settings> {
                       color: Colors.black,
                     ),
                     ListTile(
-                      onTap:(){},
+                      onTap:(){
+                        setState(() {
+                          Navigator.of(context).pushNamed("/resources");
+                        });
+                      },
                       leading: Icon(
                         LineAwesomeIcons.info,
                         color: Colors.white,
@@ -156,7 +160,11 @@ class _SettingsState extends State<Settings> {
                 child:Column(
                   children: [
                     ListTile(
-                      onTap:(){},
+                      onTap:(){
+                        setState(() {
+                          Navigator.of(context).pushNamed("/privacy");
+                        });
+                      },
                       leading: Icon(
                         LineAwesomeIcons.shield,
                         color: Colors.white,

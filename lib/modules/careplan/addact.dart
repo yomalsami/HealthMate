@@ -46,417 +46,419 @@ class _addActPageState extends State<addActPage>{
       floatingActionButton: FAB2(),
       floatingActionButtonLocation: _CustomStartTopFloatingActionButtonLocation(),
       appBar: MyAppbar(),
-      body:SingleChildScrollView(
-        reverse: false,
-        child: new Stack(
-            children: <Widget>[
-              new Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Padding(padding: EdgeInsets.only(top: 60.0)),
-                  new Form(
-                    key: _formKey,
-                    autovalidate: _autoValidate1,
-                      child: new Theme(
-                          data:new ThemeData(
-                              brightness: Brightness.dark,primarySwatch: Colors.teal,
-                              inputDecorationTheme:new InputDecorationTheme(
-                                  labelStyle:new TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20.0,
-                                  )) ),
-                          child: new Container(
-                              padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                              child: new Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Align(
-                                      alignment: Alignment.center,
-                                      child: new Container(
-                                        height: 100.0,
-                                        width: 400.0,
-                                        child: new Text(
-                                        " Add Reminder For Activities",
-                                        style: TextStyle(
-                                          fontSize:30.0,
-                                          fontWeight: FontWeight.w200,
-                                          color:Colors.white
-                                        ),
-                                        )),
-                                    ),
-                                    new TextFormField(
-                                      autovalidate: _autoValidate1,
-                                      textInputAction: TextInputAction.done,
-                                      onSaved: (String value){
-                                        _name=value;
-                                      },
-                                      decoration: new InputDecoration(
-                                        hintText: "Your Activity Name",
-                                        border: new OutlineInputBorder(
-                                          borderRadius: new BorderRadius.circular(15.0),
-                                          borderSide: BorderSide(
-                                            color: Colors.blue,
+      body:Scrollbar(
+              child: SingleChildScrollView(
+          reverse: false,
+          child: new Stack(
+              children: <Widget>[
+                new Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(padding: EdgeInsets.only(top: 60.0)),
+                    new Form(
+                      key: _formKey,
+                      autovalidate: _autoValidate1,
+                        child: new Theme(
+                            data:new ThemeData(
+                                brightness: Brightness.dark,primarySwatch: Colors.teal,
+                                inputDecorationTheme:new InputDecorationTheme(
+                                    labelStyle:new TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20.0,
+                                    )) ),
+                            child: new Container(
+                                padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                                child: new Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: <Widget>[
+                                      Align(
+                                        alignment: Alignment.center,
+                                        child: new Container(
+                                          height: 100.0,
+                                          width: 400.0,
+                                          child: new Text(
+                                          " Add Reminder For Activities",
+                                          style: TextStyle(
+                                            fontSize:30.0,
+                                            fontWeight: FontWeight.w200,
+                                            color:Colors.white
                                           ),
-                                        ),
-                                        enabledBorder: new OutlineInputBorder(
-                                          borderRadius: new BorderRadius.circular(15.0),
-                                          borderSide: BorderSide(
-                                            color: Colors.white,
-                                          ),
-
-                                        ),
+                                          )),
                                       ),
-                                      keyboardType:TextInputType.text,
-                                    ),
-                                    Padding(
-                                        padding: const EdgeInsets.only(top: 20.0) ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-                                        new Text(
-                                          "Start Time",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 15.0,
-                                          ),),
-                                      ],
-                                    ),
-                                    new Padding(padding: EdgeInsets.only(top:10.0)),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        ButtonTheme(
-                                          height: 60.0,
-                                          minWidth: 370.0,
-                                          child: RaisedButton(
-                                              shape: (RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.circular(10.0)
-                                              )),
-                                              elevation: 4.0,
-                                              onPressed: (){
-                                                DatePicker.showTimePicker(context,
-                                                    theme: DatePickerTheme(
-                                                      containerHeight: 315.0,
-                                                      itemStyle: const TextStyle(color: Colors.black),
-                                                      backgroundColor: Colors.white,
-                                                      headerColor: Colors.white,
-                                                      doneStyle: const TextStyle(color: Colors.blue),
-                                                      cancelStyle: const TextStyle(color: Colors.black),
-                                                    ),
-                                                    showTitleActions: true,
-                                                    onConfirm: (time){
-                                                      print("Confirm $time");
-                                                      _time1 = '${time.hour}:${time.minute}:${time.second}';
-                                                      setState(() {});
-                                                    }, currentTime: DateTime.now(), locale : LocaleType.en);
-                                                setState(() {});
-                                              },
-                                              child: Container(
-                                                alignment: Alignment.center,
-                                                height: 50.0,
-                                                child: Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                  children: <Widget>[
-                                                    Row(
-                                                      children: [
-                                                        Container(
-                                                          child: Row(
-                                                            mainAxisAlignment: MainAxisAlignment.start,
-                                                            children: [
-                                                              Icon(
-                                                                Icons.access_time,
-                                                                size: 25.0,
-                                                                color: Colors.white,
+                                      new TextFormField(
+                                        autovalidate: _autoValidate1,
+                                        textInputAction: TextInputAction.done,
+                                        onSaved: (String value){
+                                          _name=value;
+                                        },
+                                        decoration: new InputDecoration(
+                                          hintText: "Your Activity Name",
+                                          border: new OutlineInputBorder(
+                                            borderRadius: new BorderRadius.circular(15.0),
+                                            borderSide: BorderSide(
+                                              color: Colors.blue,
+                                            ),
+                                          ),
+                                          enabledBorder: new OutlineInputBorder(
+                                            borderRadius: new BorderRadius.circular(15.0),
+                                            borderSide: BorderSide(
+                                              color: Colors.white,
+                                            ),
 
-                                                              ),
-                                                              Padding(padding: EdgeInsets.only(left: 20.0)),
-                                                              Text(
-                                                                "$_time1",
-                                                                style: TextStyle(
-                                                                  color: Colors.white,
-                                                                  fontWeight: FontWeight.w300,
-                                                                  fontSize: 18.0,
-                                                                ),
-                                                              )
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Padding(padding: EdgeInsets.only(left: 85.0)),
-                                                    Text(
-                                                        "Change",
-                                                        style:TextStyle(
-                                                          color:Colors.white,
-                                                          fontSize: 18.0,
-                                                          fontWeight: FontWeight.w300,
-                                                        )
-                                                    )
-                                                  ],
-                                                ),
-                                              )),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                        padding: const EdgeInsets.only(top: 20.0) ),
-                                  
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-                                        new Text(
-                                          "End Time",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 15.0,
-                                          ),),
-                                      ],
-                                    ),
-                                    new Padding(padding: EdgeInsets.only(top:10.0)),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        ButtonTheme(
-                                          height: 60.0,
-                                          minWidth: 370.0,
-                                          child: RaisedButton(
-                                              shape: (RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.circular(10.0)
-                                              )),
-                                              elevation: 4.0,
-                                              onPressed: (){
-                                                DatePicker.showTimePicker(context,
-                                                    theme: DatePickerTheme(
-                                                      containerHeight: 315.0,
-                                                      itemStyle: const TextStyle(color: Colors.black),
-                                                      backgroundColor: Colors.white,
-                                                      headerColor: Colors.white,
-                                                      doneStyle: const TextStyle(color: Colors.blue),
-                                                      cancelStyle: const TextStyle(color: Colors.black),
-                                                    ),
-                                                    showTitleActions: true,
-                                                    onConfirm: (time){
-                                                      print("Confirm $time");
-                                                      _time2 = '${time.hour}:${time.minute}:${time.second}';
-                                                      setState(() {});
-                                                    }, currentTime: DateTime.now(), locale : LocaleType.en);
-                                                setState(() {});
-                                              },
-                                              child: Container(
-                                                alignment: Alignment.center,
-                                                height: 50.0,
-                                                child: Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                  children: <Widget>[
-                                                    Row(
-                                                      children: [
-                                                        Container(
-                                                          child: Row(
-                                                            mainAxisAlignment: MainAxisAlignment.start,
-                                                            children: [
-                                                              Icon(
-                                                                Icons.access_time,
-                                                                size: 25.0,
-                                                                color: Colors.white,
-
-                                                              ),
-                                                              Padding(padding: EdgeInsets.only(left: 20.0)),
-                                                              Text(
-                                                                "$_time2",
-                                                                style: TextStyle(
-                                                                  color: Colors.white,
-                                                                  fontWeight: FontWeight.w300,
-                                                                  fontSize: 18.0,
-                                                                ),
-                                                              )
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Padding(padding: EdgeInsets.only(left: 85.0)),
-                                                    Text(
-                                                        "Change",
-                                                        style:TextStyle(
-                                                          color:Colors.white,
-                                                          fontSize: 18.0,
-                                                          fontWeight: FontWeight.w300,
-                                                        )
-                                                    )
-                                                  ],
-                                                ),
-                                              )),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                        padding: const EdgeInsets.only(top: 20.0) ),
-                                    //new Padding(padding: EdgeInsets.only(top:10.0)),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-                                        new Text(
-                                          "Reminder Time",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 15.0,
-                                          ),),
-                                      ],
-                                    ),
-                                    new Padding(padding: EdgeInsets.only(top:10.0)),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        ButtonTheme(
-                                          height: 60.0,
-                                          minWidth: 370.0,
-                                          child: RaisedButton(
-                                              shape: (RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.circular(10.0)
-                                              )),
-                                              elevation: 4.0,
-                                              onPressed: (){
-                                                DatePicker.showTimePicker(context,
-                                                    theme: DatePickerTheme(
-                                                      containerHeight: 315.0,
-                                                      itemStyle: const TextStyle(color: Colors.black),
-                                                      backgroundColor: Colors.white,
-                                                      headerColor: Colors.white,
-                                                      doneStyle: const TextStyle(color: Colors.blue),
-                                                      cancelStyle: const TextStyle(color: Colors.black),
-                                                    ),
-                                                    showTitleActions: true,
-                                                    onConfirm: (time){
-                                                      print("Confirm $time");
-                                                      _time3 = '${time.hour}:${time.minute}:${time.second}';
-                                                      setState(() {});
-                                                    }, currentTime: DateTime.now(), locale : LocaleType.en);
-                                                setState(() {});
-                                              },
-                                              child: Container(
-                                                alignment: Alignment.center,
-                                                height: 50.0,
-                                                child: Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                  children: <Widget>[
-                                                    Row(
-                                                      children: [
-                                                        Container(
-                                                          child: Row(
-                                                            mainAxisAlignment: MainAxisAlignment.start,
-                                                            children: [
-                                                              Icon(
-                                                                Icons.access_time,
-                                                                size: 25.0,
-                                                                color: Colors.white,
-
-                                                              ),
-                                                              Padding(padding: EdgeInsets.only(left: 20.0)),
-                                                              Text(
-                                                                "$_time3",
-                                                                style: TextStyle(
-                                                                  color: Colors.white,
-                                                                  fontWeight: FontWeight.w300,
-                                                                  fontSize: 18.0,
-                                                                ),
-                                                              )
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Padding(padding: EdgeInsets.only(left: 85.0)),
-                                                    Text(
-                                                        "Change",
-                                                        style:TextStyle(
-                                                          color:Colors.white,
-                                                          fontSize: 18.0,
-                                                          fontWeight: FontWeight.w300,
-                                                        )
-                                                    )
-                                                  ],
-                                                ),
-                                              )),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                        padding: const EdgeInsets.only(top: 20.0) ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-                                        new Text(
-                                          "Reminder Days",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 15.0,
-                                          ),),
-                                      ],
-                                    ),
-                                    new Padding(padding: EdgeInsets.only(top:10.0)),
-                                    ToggleButtons(
-                                      color:Colors.white,
-                                      //highlightColor: Colors.red,
-                                      selectedColor: Colors.teal,
-                                      splashColor: Colors.blueAccent,
-                                      borderColor: Colors.white,
-                                      borderWidth: 3,
-                                      selectedBorderColor: Colors.teal,
-                                      //renderBorder: true,
-                                      children: <Widget>[
-                                        Text("M",style: TextStyle(fontWeight: FontWeight.w300),),
-                                        Text("T",style: TextStyle(fontWeight: FontWeight.w300),),
-                                        Text("W",style: TextStyle(fontWeight: FontWeight.w300),),
-                                        Text("T",style: TextStyle(fontWeight: FontWeight.w300),),
-                                        Text("F",style: TextStyle(fontWeight: FontWeight.w300),),
-                                        Text("S",style: TextStyle(fontWeight: FontWeight.w300),),
-                                        Text("S",style: TextStyle(fontWeight: FontWeight.w300),),
-                                      ],
-                                      isSelected: isSelected,
-                                      onPressed: (int index){
-                                        setState(() {
-                                          isSelected[index] = !isSelected[index];
-                                        });
-                                      },
-                                    ),
-                                    new Padding(padding: EdgeInsets.only(top:60.0)),
-                                    Align(
-                                    alignment: Alignment.center,
-                                    child: Container(
-                                      height: 70.0,
-                                      width: 500.0,
-                                      child: MaterialButton(
-                                        height: 50.0,
-                                        minWidth: 70.0,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: new BorderRadius.circular(10.0),
-                                          side: BorderSide(color: Colors.white10),
-                                        ),
-                                        color:Colors.teal,
-                                        textColor: Colors.white,
-                                        child: new Text(
-                                          "Submit",
-                                          style: TextStyle(
-                                            color:Colors.white,
-                                            fontSize:20.0,
-                                            fontWeight: FontWeight.w300,
                                           ),
                                         ),
-                                    onPressed: _validateInputs,
-                                    splashColor: Colors.white70,
-                                  ),
-                                ),
-                              )
-                                  ])
-                          )
-                      )
-                  )],
-              ),
+                                        keyboardType:TextInputType.text,
+                                      ),
+                                      Padding(
+                                          padding: const EdgeInsets.only(top: 20.0) ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          new Text(
+                                            "Start Time",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15.0,
+                                            ),),
+                                        ],
+                                      ),
+                                      new Padding(padding: EdgeInsets.only(top:10.0)),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          ButtonTheme(
+                                            height: 60.0,
+                                            minWidth: 370.0,
+                                            child: RaisedButton(
+                                                shape: (RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(10.0)
+                                                )),
+                                                elevation: 4.0,
+                                                onPressed: (){
+                                                  DatePicker.showTimePicker(context,
+                                                      theme: DatePickerTheme(
+                                                        containerHeight: 315.0,
+                                                        itemStyle: const TextStyle(color: Colors.black),
+                                                        backgroundColor: Colors.white,
+                                                        headerColor: Colors.white,
+                                                        doneStyle: const TextStyle(color: Colors.blue),
+                                                        cancelStyle: const TextStyle(color: Colors.black),
+                                                      ),
+                                                      showTitleActions: true,
+                                                      onConfirm: (time){
+                                                        print("Confirm $time");
+                                                        _time1 = '${time.hour}:${time.minute}:${time.second}';
+                                                        setState(() {});
+                                                      }, currentTime: DateTime.now(), locale : LocaleType.en);
+                                                  setState(() {});
+                                                },
+                                                child: Container(
+                                                  alignment: Alignment.center,
+                                                  height: 50.0,
+                                                  child: Row(
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                    children: <Widget>[
+                                                      Row(
+                                                        children: [
+                                                          Container(
+                                                            child: Row(
+                                                              mainAxisAlignment: MainAxisAlignment.start,
+                                                              children: [
+                                                                Icon(
+                                                                  Icons.access_time,
+                                                                  size: 25.0,
+                                                                  color: Colors.white,
 
-            ]
+                                                                ),
+                                                                Padding(padding: EdgeInsets.only(left: 20.0)),
+                                                                Text(
+                                                                  "$_time1",
+                                                                  style: TextStyle(
+                                                                    color: Colors.white,
+                                                                    fontWeight: FontWeight.w300,
+                                                                    fontSize: 18.0,
+                                                                  ),
+                                                                )
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Padding(padding: EdgeInsets.only(left: 85.0)),
+                                                      Text(
+                                                          "Change",
+                                                          style:TextStyle(
+                                                            color:Colors.white,
+                                                            fontSize: 18.0,
+                                                            fontWeight: FontWeight.w300,
+                                                          )
+                                                      )
+                                                    ],
+                                                  ),
+                                                )),
+                                          ),
+                                        ],
+                                      ),
+                                      Padding(
+                                          padding: const EdgeInsets.only(top: 20.0) ),
+                                    
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          new Text(
+                                            "End Time",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15.0,
+                                            ),),
+                                        ],
+                                      ),
+                                      new Padding(padding: EdgeInsets.only(top:10.0)),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          ButtonTheme(
+                                            height: 60.0,
+                                            minWidth: 370.0,
+                                            child: RaisedButton(
+                                                shape: (RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(10.0)
+                                                )),
+                                                elevation: 4.0,
+                                                onPressed: (){
+                                                  DatePicker.showTimePicker(context,
+                                                      theme: DatePickerTheme(
+                                                        containerHeight: 315.0,
+                                                        itemStyle: const TextStyle(color: Colors.black),
+                                                        backgroundColor: Colors.white,
+                                                        headerColor: Colors.white,
+                                                        doneStyle: const TextStyle(color: Colors.blue),
+                                                        cancelStyle: const TextStyle(color: Colors.black),
+                                                      ),
+                                                      showTitleActions: true,
+                                                      onConfirm: (time){
+                                                        print("Confirm $time");
+                                                        _time2 = '${time.hour}:${time.minute}:${time.second}';
+                                                        setState(() {});
+                                                      }, currentTime: DateTime.now(), locale : LocaleType.en);
+                                                  setState(() {});
+                                                },
+                                                child: Container(
+                                                  alignment: Alignment.center,
+                                                  height: 50.0,
+                                                  child: Row(
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                    children: <Widget>[
+                                                      Row(
+                                                        children: [
+                                                          Container(
+                                                            child: Row(
+                                                              mainAxisAlignment: MainAxisAlignment.start,
+                                                              children: [
+                                                                Icon(
+                                                                  Icons.access_time,
+                                                                  size: 25.0,
+                                                                  color: Colors.white,
+
+                                                                ),
+                                                                Padding(padding: EdgeInsets.only(left: 20.0)),
+                                                                Text(
+                                                                  "$_time2",
+                                                                  style: TextStyle(
+                                                                    color: Colors.white,
+                                                                    fontWeight: FontWeight.w300,
+                                                                    fontSize: 18.0,
+                                                                  ),
+                                                                )
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Padding(padding: EdgeInsets.only(left: 85.0)),
+                                                      Text(
+                                                          "Change",
+                                                          style:TextStyle(
+                                                            color:Colors.white,
+                                                            fontSize: 18.0,
+                                                            fontWeight: FontWeight.w300,
+                                                          )
+                                                      )
+                                                    ],
+                                                  ),
+                                                )),
+                                          ),
+                                        ],
+                                      ),
+                                      Padding(
+                                          padding: const EdgeInsets.only(top: 20.0) ),
+                                      //new Padding(padding: EdgeInsets.only(top:10.0)),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          new Text(
+                                            "Reminder Time",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15.0,
+                                            ),),
+                                        ],
+                                      ),
+                                      new Padding(padding: EdgeInsets.only(top:10.0)),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          ButtonTheme(
+                                            height: 60.0,
+                                            minWidth: 370.0,
+                                            child: RaisedButton(
+                                                shape: (RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(10.0)
+                                                )),
+                                                elevation: 4.0,
+                                                onPressed: (){
+                                                  DatePicker.showTimePicker(context,
+                                                      theme: DatePickerTheme(
+                                                        containerHeight: 315.0,
+                                                        itemStyle: const TextStyle(color: Colors.black),
+                                                        backgroundColor: Colors.white,
+                                                        headerColor: Colors.white,
+                                                        doneStyle: const TextStyle(color: Colors.blue),
+                                                        cancelStyle: const TextStyle(color: Colors.black),
+                                                      ),
+                                                      showTitleActions: true,
+                                                      onConfirm: (time){
+                                                        print("Confirm $time");
+                                                        _time3 = '${time.hour}:${time.minute}:${time.second}';
+                                                        setState(() {});
+                                                      }, currentTime: DateTime.now(), locale : LocaleType.en);
+                                                  setState(() {});
+                                                },
+                                                child: Container(
+                                                  alignment: Alignment.center,
+                                                  height: 50.0,
+                                                  child: Row(
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                    children: <Widget>[
+                                                      Row(
+                                                        children: [
+                                                          Container(
+                                                            child: Row(
+                                                              mainAxisAlignment: MainAxisAlignment.start,
+                                                              children: [
+                                                                Icon(
+                                                                  Icons.access_time,
+                                                                  size: 25.0,
+                                                                  color: Colors.white,
+
+                                                                ),
+                                                                Padding(padding: EdgeInsets.only(left: 20.0)),
+                                                                Text(
+                                                                  "$_time3",
+                                                                  style: TextStyle(
+                                                                    color: Colors.white,
+                                                                    fontWeight: FontWeight.w300,
+                                                                    fontSize: 18.0,
+                                                                  ),
+                                                                )
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Padding(padding: EdgeInsets.only(left: 85.0)),
+                                                      Text(
+                                                          "Change",
+                                                          style:TextStyle(
+                                                            color:Colors.white,
+                                                            fontSize: 18.0,
+                                                            fontWeight: FontWeight.w300,
+                                                          )
+                                                      )
+                                                    ],
+                                                  ),
+                                                )),
+                                          ),
+                                        ],
+                                      ),
+                                      Padding(
+                                          padding: const EdgeInsets.only(top: 20.0) ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          new Text(
+                                            "Reminder Days",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15.0,
+                                            ),),
+                                        ],
+                                      ),
+                                      new Padding(padding: EdgeInsets.only(top:10.0)),
+                                      ToggleButtons(
+                                        color:Colors.white,
+                                        //highlightColor: Colors.red,
+                                        selectedColor: Colors.teal,
+                                        splashColor: Colors.blueAccent,
+                                        borderColor: Colors.white,
+                                        borderWidth: 3,
+                                        selectedBorderColor: Colors.teal,
+                                        //renderBorder: true,
+                                        children: <Widget>[
+                                          Text("M",style: TextStyle(fontWeight: FontWeight.w300),),
+                                          Text("T",style: TextStyle(fontWeight: FontWeight.w300),),
+                                          Text("W",style: TextStyle(fontWeight: FontWeight.w300),),
+                                          Text("T",style: TextStyle(fontWeight: FontWeight.w300),),
+                                          Text("F",style: TextStyle(fontWeight: FontWeight.w300),),
+                                          Text("S",style: TextStyle(fontWeight: FontWeight.w300),),
+                                          Text("S",style: TextStyle(fontWeight: FontWeight.w300),),
+                                        ],
+                                        isSelected: isSelected,
+                                        onPressed: (int index){
+                                          setState(() {
+                                            isSelected[index] = !isSelected[index];
+                                          });
+                                        },
+                                      ),
+                                      new Padding(padding: EdgeInsets.only(top:60.0)),
+                                      Align(
+                                      alignment: Alignment.center,
+                                      child: Container(
+                                        height: 70.0,
+                                        width: 500.0,
+                                        child: MaterialButton(
+                                          height: 50.0,
+                                          minWidth: 70.0,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: new BorderRadius.circular(10.0),
+                                            side: BorderSide(color: Colors.white10),
+                                          ),
+                                          color:Colors.teal,
+                                          textColor: Colors.white,
+                                          child: new Text(
+                                            "Submit",
+                                            style: TextStyle(
+                                              color:Colors.white,
+                                              fontSize:20.0,
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          ),
+                                      onPressed: _validateInputs,
+                                      splashColor: Colors.white70,
+                                    ),
+                                  ),
+                                )
+                                    ])
+                            )
+                        )
+                    )],
+                ),
+
+              ]
+          ),
         ),
       ),
     );

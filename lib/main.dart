@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
           '/reminders':(_) =>new ReminderPage(),
           '/careplan':(_) =>new carePlanPage(),
           '/addmed': (_) =>new addMedPage(),
-          '/addact': (_) =>new addMedPage(),
+          '/addact': (_) =>new addActPage(),
           '/home': (_) =>new HomePage(),
           '/emergency':(_)=> new emergencyPage(),
           '/editProfile':(_)=> new editProfile(),

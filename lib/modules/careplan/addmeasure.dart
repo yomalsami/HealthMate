@@ -63,227 +63,229 @@ class _vitalHomePageState extends State<vitalHomePage> {
       floatingActionButton: FAB2(),
       floatingActionButtonLocation: _CustomStartTopFloatingActionButtonLocation(),
       appBar: MyAppbar(),
-      body: SingleChildScrollView(
-          child:new Column(
-          children: <Widget>[
-            new Padding(padding: EdgeInsets.only(top: 30.0)),
-            Align(
-              alignment: Alignment.center,
-              child: new Container(
-                height: 100.0,
-                width: 400.0,
-                child: new Text(
-                  "  Add Details for Vitals",
-                  style: TextStyle(
-                    fontSize:40.0,
-                    color:Colors.white,
-                    fontWeight:FontWeight.w200,
+      body: Scrollbar(
+              child: SingleChildScrollView(
+            child:new Column(
+            children: <Widget>[
+              new Padding(padding: EdgeInsets.only(top: 30.0)),
+              Align(
+                alignment: Alignment.center,
+                child: new Container(
+                  height: 100.0,
+                  width: 400.0,
+                  child: new Text(
+                    "  Add Details for Vitals",
+                    style: TextStyle(
+                      fontSize:40.0,
+                      color:Colors.white,
+                      fontWeight:FontWeight.w200,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Padding(padding: EdgeInsets.only(top:10.0)),
-            Container(
-              child: Column(
-                children: <Widget>[
-                  new Form(
-                    key: _formKey,
-                    autovalidate:_autoValidate1,
-                    child:Theme(
-                      data:new ThemeData(
-                          brightness: Brightness.dark,primarySwatch: Colors.teal,
-                          inputDecorationTheme:new InputDecorationTheme(
-                              labelStyle:new TextStyle(
-                                color: Colors.blue,
-                                fontSize: 20.0,
-                              )) ),
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            height: 70.0,
-                            width: 390.0,
-                            child: new TextFormField(
-                              validator: validate,
-                              onSaved: (value){
-                                _sys=value;
-                              },
-                              onFieldSubmitted: (v){
-                                FocusScope.of(context).requestFocus(_focusNode2);
-                              },
-                              textInputAction: TextInputAction.next,
-                              focusNode: _focusNode1,
-                              onTap: _requestFocus1,
-                              decoration: new InputDecoration(
-                                  labelText: "Systolic Pressure",
-                                  hintText: "Enter the systolic pressure here",
-                                  border: new OutlineInputBorder(
-                                    borderRadius: new BorderRadius.circular(20.0),
-                                    borderSide: BorderSide(
-                                      color: Colors.blue,
+              Padding(padding: EdgeInsets.only(top:10.0)),
+              Container(
+                child: Column(
+                  children: <Widget>[
+                    new Form(
+                      key: _formKey,
+                      autovalidate:_autoValidate1,
+                      child:Theme(
+                        data:new ThemeData(
+                            brightness: Brightness.dark,primarySwatch: Colors.teal,
+                            inputDecorationTheme:new InputDecorationTheme(
+                                labelStyle:new TextStyle(
+                                  color: Colors.blue,
+                                  fontSize: 20.0,
+                                )) ),
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              height: 70.0,
+                              width: 390.0,
+                              child: new TextFormField(
+                                validator: validate,
+                                onSaved: (value){
+                                  _sys=value;
+                                },
+                                onFieldSubmitted: (v){
+                                  FocusScope.of(context).requestFocus(_focusNode2);
+                                },
+                                textInputAction: TextInputAction.next,
+                                focusNode: _focusNode1,
+                                onTap: _requestFocus1,
+                                decoration: new InputDecoration(
+                                    labelText: "Systolic Pressure",
+                                    hintText: "Enter the systolic pressure here",
+                                    border: new OutlineInputBorder(
+                                      borderRadius: new BorderRadius.circular(20.0),
+                                      borderSide: BorderSide(
+                                        color: Colors.blue,
+                                      ),
                                     ),
-                                  ),
-                                  labelStyle: TextStyle(
-                                      color:_focusNode1.hasFocus ? Colors.blue : Colors.white)
+                                    labelStyle: TextStyle(
+                                        color:_focusNode1.hasFocus ? Colors.blue : Colors.white)
+                                ),
+                                keyboardType:TextInputType.number,
                               ),
-                              keyboardType:TextInputType.number,
                             ),
-                          ),
-                          new Padding(padding: EdgeInsets.only(top:20.0)),
-                          Container(
-                            height: 70.0,
-                            width: 390.0,
-                            child: new TextFormField(
-                              validator: validate,
-                              onSaved: (value){
-                                _dia=value;
-                              },
-                              textInputAction: TextInputAction.done,
-                              focusNode: _focusNode2,
-                              onTap: _requestFocus2,
-                              decoration: new InputDecoration(
-                                  labelText: "Diastolic Pressure",
-                                  hintText: "Enter the systolic pressure here",
-                                  border: new OutlineInputBorder(
-                                    borderRadius: new BorderRadius.circular(20.0),
-                                    borderSide: BorderSide(
-                                      color: Colors.blue,
+                            new Padding(padding: EdgeInsets.only(top:20.0)),
+                            Container(
+                              height: 70.0,
+                              width: 390.0,
+                              child: new TextFormField(
+                                validator: validate,
+                                onSaved: (value){
+                                  _dia=value;
+                                },
+                                textInputAction: TextInputAction.done,
+                                focusNode: _focusNode2,
+                                onTap: _requestFocus2,
+                                decoration: new InputDecoration(
+                                    labelText: "Diastolic Pressure",
+                                    hintText: "Enter the systolic pressure here",
+                                    border: new OutlineInputBorder(
+                                      borderRadius: new BorderRadius.circular(20.0),
+                                      borderSide: BorderSide(
+                                        color: Colors.blue,
+                                      ),
                                     ),
-                                  ),
-                                  labelStyle: TextStyle(
-                                      color:_focusNode2.hasFocus ? Colors.blue : Colors.white)
+                                    labelStyle: TextStyle(
+                                        color:_focusNode2.hasFocus ? Colors.blue : Colors.white)
+                                ),
+                                keyboardType:TextInputType.number,
                               ),
-                              keyboardType:TextInputType.number,
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  )
+                    )
+                  ],
+                ),
+              ),
+              Padding(padding: EdgeInsets.only(top:10.0)),            
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(padding: EdgeInsets.only(left:10.0)),
+                    Text(
+                    "Mood",
+                    textAlign: TextAlign.start,
+                    style:TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+
+                    )
+                  ),]
+                ),
+              ),
+              Padding(padding: EdgeInsets.only(top:10.0)),
+              new Stack(
+                children: [
+                  Padding(padding: EdgeInsets.only(top:30.0)),
+                  SliderWidget(),
                 ],
               ),
-            ),
-            Padding(padding: EdgeInsets.only(top:10.0)),            
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Padding(padding: EdgeInsets.only(left:10.0)),
-                  Text(
-                  "Mood",
-                  textAlign: TextAlign.start,
-                  style:TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
+              Padding(padding: EdgeInsets.only(top:10.0)),
+              Container(
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Padding(padding: EdgeInsets.only(left:10.0)),
+                      Text(
+                          "Pain",
+                          textAlign: TextAlign.start,
+                          style:TextStyle(
+                            color: Colors.white,
+                            fontSize: 20.0,
 
-                  )
-                ),]
-              ),
-            ),
-            Padding(padding: EdgeInsets.only(top:10.0)),
-            new Stack(
-              children: [
-                Padding(padding: EdgeInsets.only(top:30.0)),
-                SliderWidget(),
-              ],
-            ),
-            Padding(padding: EdgeInsets.only(top:10.0)),
-            Container(
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(padding: EdgeInsets.only(left:10.0)),
-                    Text(
-                        "Pain",
-                        textAlign: TextAlign.start,
-                        style:TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-
-                        )
-                    ),]
-              ),
-            ),
-            Padding(padding: EdgeInsets.only(top:10.0)),
-            new Stack(
-              children: [
-                Padding(padding: EdgeInsets.only(top:30.0)),
-                SliderWidget(),
-              ],
-            ),Padding(padding: EdgeInsets.only(top:10.0)),
-            Container(
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(padding: EdgeInsets.only(left:10.0)),
-                    Text(
-                        "Energy",
-                        textAlign: TextAlign.start,
-                        style:TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-
-                        )
-                    ),]
-              ),
-            ),
-            Padding(padding: EdgeInsets.only(top:10.0)),
-            new Stack(
-              children: [
-                Padding(padding: EdgeInsets.only(top:30.0)),
-                SliderWidget(),
-              ],
-            ),
-            Padding(padding: EdgeInsets.only(top:10.0)),            
-            Container(
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(padding: EdgeInsets.only(left:10.0)),
-                    Text(
-                        "Attention",
-                        textAlign: TextAlign.start,
-                        style:TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                        )
-                    ),]
-              ),
-            ),
-            Padding(padding: EdgeInsets.only(top:10.0)),
-            new Stack(
-              children: [
-                Padding(padding: EdgeInsets.only(top:30.0)),
-                SliderWidget(),
-              ],
-            ),
-            new Padding(padding: EdgeInsets.only(top:30.0)),
-            Align(
-              alignment: Alignment.center,
-              child: Container(
-                height: 60.0,
-                width: 400.0,
-                child: MaterialButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(10.0),
-                    side: BorderSide(color: Colors.white10),
-                  ),
-                  color:Colors.teal,
-                  textColor: Colors.white,
-                  child: new Text(
-                    "Submit",
-                    style: TextStyle(
-                      color:Colors.white,
-                      fontSize:20.0,
-                      fontWeight: FontWeight.w300,
-                    ),
-                  ),
-                  onPressed: _validateInputs,
-                  splashColor: Colors.white70,
+                          )
+                      ),]
                 ),
               ),
-            )
-            ],
-        )
+              Padding(padding: EdgeInsets.only(top:10.0)),
+              new Stack(
+                children: [
+                  Padding(padding: EdgeInsets.only(top:30.0)),
+                  SliderWidget(),
+                ],
+              ),Padding(padding: EdgeInsets.only(top:10.0)),
+              Container(
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Padding(padding: EdgeInsets.only(left:10.0)),
+                      Text(
+                          "Energy",
+                          textAlign: TextAlign.start,
+                          style:TextStyle(
+                            color: Colors.white,
+                            fontSize: 20.0,
+
+                          )
+                      ),]
+                ),
+              ),
+              Padding(padding: EdgeInsets.only(top:10.0)),
+              new Stack(
+                children: [
+                  Padding(padding: EdgeInsets.only(top:30.0)),
+                  SliderWidget(),
+                ],
+              ),
+              Padding(padding: EdgeInsets.only(top:10.0)),            
+              Container(
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Padding(padding: EdgeInsets.only(left:10.0)),
+                      Text(
+                          "Attention",
+                          textAlign: TextAlign.start,
+                          style:TextStyle(
+                            color: Colors.white,
+                            fontSize: 20.0,
+                          )
+                      ),]
+                ),
+              ),
+              Padding(padding: EdgeInsets.only(top:10.0)),
+              new Stack(
+                children: [
+                  Padding(padding: EdgeInsets.only(top:30.0)),
+                  SliderWidget(),
+                ],
+              ),
+              new Padding(padding: EdgeInsets.only(top:30.0)),
+              Align(
+                alignment: Alignment.center,
+                child: Container(
+                  height: 60.0,
+                  width: 400.0,
+                  child: MaterialButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(10.0),
+                      side: BorderSide(color: Colors.white10),
+                    ),
+                    color:Colors.teal,
+                    textColor: Colors.white,
+                    child: new Text(
+                      "Submit",
+                      style: TextStyle(
+                        color:Colors.white,
+                        fontSize:20.0,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                    onPressed: _validateInputs,
+                    splashColor: Colors.white70,
+                  ),
+                ),
+              )
+              ],
+          )
+        ),
       ),
     );
   }
