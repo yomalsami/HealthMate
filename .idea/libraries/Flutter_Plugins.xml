@@ -1,6 +1,10 @@
 <component name="libraryTable">
   <library name="Flutter Plugins" type="FlutterPluginsLibraryType">
-    <CLASSES />
+    <CLASSES>
+      <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/call_number-0.0.1" />
+      <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/share-0.6.4+2" />
+      <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_local_notifications-1.4.3" />
+    </CLASSES>
     <JAVADOC />
     <SOURCES />
   </library>

@@ -23,6 +23,13 @@
             </list>
           </value>
         </entry>
+        <entry key="call_number">
+          <value>
+            <list>
+              <option value="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/call_number-0.0.1/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="charcode">
           <value>
             <list>
@@ -79,6 +86,20 @@
             </list>
           </value>
         </entry>
+        <entry key="flutter_local_notifications">
+          <value>
+            <list>
+              <option value="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_local_notifications-1.4.3/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="flutter_local_notifications_platform_interface">
+          <value>
+            <list>
+              <option value="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_local_notifications_platform_interface-1.0.1/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter_test">
           <value>
             <list>
@@ -90,6 +111,13 @@
           <value>
             <list>
               <option value="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/font_awesome_flutter-8.8.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="gender_selection">
+          <value>
+            <list>
+              <option value="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/gender_selection-1.0.0/lib" />
             </list>
           </value>
         </entry>
@@ -132,6 +160,34 @@
           <value>
             <list>
               <option value="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.7.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="platform">
+          <value>
+            <list>
+              <option value="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/platform-2.2.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="plugin_platform_interface">
+          <value>
+            <list>
+              <option value="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-1.0.2/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="settings_ui">
+          <value>
+            <list>
+              <option value="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/settings_ui-0.2.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="share">
+          <value>
+            <list>
+              <option value="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/share-0.6.4+2/lib" />
             </list>
           </value>
         </entry>
@@ -218,6 +274,7 @@
       <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.4.1/lib" />
       <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/boolean_selector-2.0.0/lib" />
       <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/calendar_strip-1.0.6/lib" />
+      <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/call_number-0.0.1/lib" />
       <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/charcode-1.1.3/lib" />
       <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/clock-1.0.1/lib" />
       <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.14.12/lib" />
@@ -225,13 +282,20 @@
       <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/datetime_picker_formfield-1.0.0/lib" />
       <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.1.0/lib" />
       <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_datetime_picker-1.3.8/lib" />
+      <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_local_notifications-1.4.3/lib" />
+      <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_local_notifications_platform_interface-1.0.1/lib" />
       <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/font_awesome_flutter-8.8.1/lib" />
+      <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/gender_selection-1.0.0/lib" />
       <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/grouped_buttons-1.0.4/lib" />
       <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.16.1/lib" />
       <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/line_awesome_icons-1.0.4+2/lib" />
       <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/matcher-0.12.6/lib" />
       <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.1.8/lib" />
       <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.7.0/lib" />
+      <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/platform-2.2.1/lib" />
+      <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-1.0.2/lib" />
+      <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/settings_ui-0.2.0/lib" />
+      <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/share-0.6.4+2/lib" />
       <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/simple_gesture_detector-0.1.4/lib" />
       <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/source_span-1.7.0/lib" />
       <root url="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/stack_trace-1.9.3/lib" />

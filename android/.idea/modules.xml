@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" group="android" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="android/app" />
+      <module fileurl="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/call_number-0.0.1/android/call_number.iml" filepath="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/call_number-0.0.1/android/call_number.iml" group="android/call_number" />
+      <module fileurl="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_local_notifications-1.4.3/android/flutter_local_notifications.iml" filepath="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_local_notifications-1.4.3/android/flutter_local_notifications.iml" group="android/flutter_local_notifications" />
+      <module fileurl="file://F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/share-0.6.4+2/android/share.iml" filepath="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/share-0.6.4+2/android/share.iml" group="android/share" />
+    </modules>
+  </component>
+</project>
