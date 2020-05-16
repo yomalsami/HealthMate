@@ -2,11 +2,11 @@
 import 'package:cliniccare/home.dart';
 import 'package:cliniccare/modules/careplan/addmeasure.dart';
 import 'package:cliniccare/modules/careplan/homecare.dart';
+import 'package:cliniccare/modules/login/splash.dart';
 import 'package:cliniccare/modules/reminder/reminders.dart';
 import 'package:cliniccare/modules/setting/mycareteam.dart';
 import 'package:cliniccare/modules/setting/privacypolicy.dart';
 import 'package:cliniccare/modules/setting/setting.dart';
-import 'package:cliniccare/splash.dart';
 import 'package:flutter/material.dart';
 import 'modules/careplan/addact.dart';
 import 'modules/careplan/addmed.dart';
@@ -44,7 +44,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return new MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: resources(),
+        home: HomePage(),
         routes: <String,WidgetBuilder>{
           '/vital':(_) =>new vitalHomePage(),
           '/login':(_) =>new LoginPage(),

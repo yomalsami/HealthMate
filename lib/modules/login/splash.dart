@@ -10,6 +10,7 @@ class splashPage extends StatefulWidget {
 }
 
 class _splashPageState extends State<splashPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,10 +67,26 @@ class _splashPageState extends State<splashPage> {
                           context,new MaterialPageRoute(builder:(context) => new LoginPage()))
                     },
                     splashColor: Colors.white70,
-                  )
+                  ),
+                  
 
                 ],
-              )
+              ),
+              new Padding(padding: EdgeInsets.only(left:70.0)),
+                  new MaterialButton(
+                    height: 50.0,
+                    minWidth: 70.0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(15.0),
+                      side: BorderSide(color: Colors.white10),
+                    ),
+                    color:Colors.teal,
+                    textColor: Colors.white,
+                    child: new Text("Sign In ith Google"),
+                    onPressed: () {},
+                    
+                    splashColor: Colors.white70,
+                  )
             ],
           )
       );
