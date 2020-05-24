@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
@@ -12,12 +11,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/call_number-0.0.1/android" />
-            <option value="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.8.2+3/android" />
-            <option value="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_analytics-5.0.11/android" />
-            <option value="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.6.6/android" />
-            <option value="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.2.5+1/android" />
             <option value="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_local_notifications-1.4.3/android" />
-            <option value="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in-3.3.0+1/android" />
             <option value="F:/Flutter/flutterdata/flutter/.pub-cache/hosted/pub.dartlang.org/share-0.6.4+2/android" />
           </set>
         </option>

@@ -69,24 +69,8 @@ class _splashPageState extends State<splashPage> {
                     splashColor: Colors.white70,
                   ),
                   
-
                 ],
               ),
-              new Padding(padding: EdgeInsets.only(left:70.0)),
-                  new MaterialButton(
-                    height: 50.0,
-                    minWidth: 70.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(15.0),
-                      side: BorderSide(color: Colors.white10),
-                    ),
-                    color:Colors.teal,
-                    textColor: Colors.white,
-                    child: new Text("Sign In ith Google"),
-                    onPressed: () {},
-                    
-                    splashColor: Colors.white70,
-                  )
             ],
           )
       );
